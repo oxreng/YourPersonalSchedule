@@ -4,7 +4,7 @@ import datetime
 from .db_session import SqlAlchemyBase
 
 
-class Notes(SqlAlchemyBase):
+class Note(SqlAlchemyBase):
     __tablename__ = 'notes'
 
     id = sqlalchemy.Column(sqlalchemy.Integer,
@@ -13,4 +13,4 @@ class Notes(SqlAlchemyBase):
     text = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     datetime = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now())
 
-    users_relationship = orm.relationship("Users", back_populates="notes_relationship")
+    users_relationship = orm.relationship("User", back_populates="notes_relationship")

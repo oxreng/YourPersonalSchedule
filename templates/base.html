@@ -13,11 +13,19 @@
 <div class="header">
     <a class="logo" href="/">YourPersonalSchedule</a>
     <div class="header-right">
+        {% if current_user.is_authenticated %}
         <a class="active" href="/calendar">Calendar</a>
         <a href="/notes">Notes</a>
         <a href="/schedule">Schedule</a>
+        <a class="profile" href="/account_details/{{current_user.id}}">Profile</a>
+        {% else %}
+        <a href="/login">Войти</a>
+        <a class="register" href="/register">Создать аккаунт</a>
+        {% endif %}
     </div>
 </div>
 <main role="main" class="container" style="margin-left:center;text-align:center">
     {% block content %}{% endblock %}
 </main>
+</body>
+</html>

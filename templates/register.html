@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+      <h1>Создание аккаунта</h1>
+      <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+          {{ form.name.label }}
+          {{ form.name(class="form-control", type="string") }}
+          {% for error in form.name.errors %}
+            <div class="alert alert-danger" role="alert">
+              {{ error }}
+            </div>
+          {% endfor %}
+        </p>
+        <p>
+          {{ form.email.label }}
+          {{ form.email(class="form-control", type="email") }}
+          {% for error in form.email.errors %}
+            <div class="alert alert-danger" role="alert">
+              {{ error }}
+            </div>
+          {% endfor %}
+        </p>
+        <p>
+          {{ form.password.label }}
+          {{ form.password(class="form-control", type="password") }}
+          {% for error in form.password.errors %}
+            <div class="alert alert-danger" role="alert">
+              {{ error }}
+            </div>
+          {% endfor %}
+        </p>
+        <p>
+          {{ form.password_again.label }}
+          {{ form.password_again(class="form-control", type="password") }}
+          {% for error in form.password_again.errors %}
+            <div class="alert alert-danger" role="alert">
+              {{ error }}
+            </div>
+          {% endfor %}
+        </p>
+        <p>
+            {{ form.bday.label }}<br>
+            {{ form.bday(class="form-control", type="date") }}
+            {% for error in form.bday.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+            <br>
+        </p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit(type="submit", class="button") }}</p>
+        <div style="color:red">{{ message }}</div>
+      </form>
+    {% endblock %}
+</body>
+</html>

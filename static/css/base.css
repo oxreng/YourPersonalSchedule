@@ -37,6 +37,11 @@
   color: white;
 }
 
+.header a.register {
+    background-color: #ca2c92;
+    color: white
+}
+
 /* Float the link section to the right */
 .header-right {
   float: right;

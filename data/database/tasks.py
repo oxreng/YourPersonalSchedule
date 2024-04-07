@@ -4,7 +4,7 @@ import datetime
 from .db_session import SqlAlchemyBase
 
 
-class Tasks(SqlAlchemyBase):
+class Task(SqlAlchemyBase):
     __tablename__ = 'tasks'
 
     id = sqlalchemy.Column(sqlalchemy.Integer,
@@ -14,4 +14,4 @@ class Tasks(SqlAlchemyBase):
     done = sqlalchemy.Column(sqlalchemy.Boolean, default=False)
     datetime = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now())
 
-    users_relationship = orm.relationship("Users", back_populates="tasks_relationship")
+    users_relationship = orm.relationship("User", back_populates="tasks_relationship")

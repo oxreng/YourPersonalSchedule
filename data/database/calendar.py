@@ -14,4 +14,4 @@ class Calendar(SqlAlchemyBase):
     datetime_start = sqlalchemy.Column(sqlalchemy.DateTime)
     datetime_end = sqlalchemy.Column(sqlalchemy.DateTime)
 
-    users_relationship = orm.relationship("Users", back_populates="calendar_relationship")
+    users_relationship = orm.relationship("User", back_populates="calendar_relationship")
