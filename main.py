@@ -4,7 +4,14 @@ from forms.login import LoginForm
 from forms.register import RegisterForm
 from flask_login import login_required, LoginManager, login_user, logout_user, current_user
 from data.database.users import User
+from data.database.notes import Note
+from datetime import datetime
+import locale
 
+locale.setlocale(
+    category=locale.LC_ALL,
+    locale="Russian"  # Note: do not use "de_DE" as it doesn't work
+)
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'MICHAEL_JORDAN_THE_BEST'
 
@@ -30,8 +37,36 @@ def calendar_month():
 
 
 @app.route('/schedule')
-def notes():
+def schedule():
     return render_template('schedule.html')
+
+
+@app.route('/notes')
+@login_required
+def notes():
+    session = db_session.create_session()
+    notes = session.query(Note).filter(Note.user_id == current_user.id).all()
+    for note in notes:
+        note.datetime = note.datetime.strftime("%Y/%m/%d")
+        note.datetime = note.datetime.split()
+        note.datetime[0] = datetime.strptime(note.datetime[0], "%Y/%m/%d").strftime("%B %d, %Y")
+        note.datetime = ' '.join(note.datetime)
+    return render_template('notes.html', notes=notes)
+
+
+@app.route('/edit_note')
+def edit_note():
+    return render_template('main_page.html')
+
+
+@app.route('/delete_note')
+def delete_note():
+    return render_template('main_page.html')
+
+
+@app.route('/add_note')
+def add_note():
+    return render_template('main_page.html')
 
 
 @app.route('/register', methods=['GET', 'POST'])
