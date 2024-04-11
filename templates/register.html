@@ -8,6 +8,9 @@
     {% extends "base.html" %}
     {% block content %}
       <h1>Создание аккаунта</h1>
+        <!-- CSRF Protection -->
+        {{ form.csrf_token }}
+
       <form action="" method="post">
         {{ form.hidden_tag() }}
         <p>

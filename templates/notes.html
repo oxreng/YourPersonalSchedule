@@ -11,12 +11,12 @@
                 <small class="card-text">{{ note.datetime }}</small><br><br>
                 <div id="note-actions">
                     <!-- EDIT note button -->
-                    <a id="edit-note-button" href="{{ url_for('edit_note', note_id=note.note_id) }}">
+                    <a id="edit-note-button" href="{{ url_for('user_views.edit_note', note_id=note.note_id) }}">
                         <i title="Изменить" class="fa fa-pencil-square fa-2x"></i>
                     </a>
 
                     <!-- DELETE note button -->
-                    <a id="delete-note-button" href="{{ url_for('delete_note', note_id=note.note_id) }}"
+                    <a id="delete-note-button" href="{{ url_for('user_views.delete_note', note_id=note.note_id) }}"
                        onclick="return deleteNote()">
                         <i title="Delete" class="fa fa-trash fa-2x"></i>
                     </a>
@@ -27,7 +27,7 @@
     <div id="notes-container">
 
     <!-- ADD note button -->
-    <a id="add-note-button" href="{{ url_for('add_note') }}">
+    <a id="add-note-button" href="{{ url_for('user_views.add_note') }}">
         <i title="Добавить заметку" class="fa fa-plus-circle fa-5x"></i>
     </a>
 

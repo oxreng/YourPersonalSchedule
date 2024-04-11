@@ -8,6 +8,8 @@
     {% extends "base.html" %}
     {% block content %}
         <form action="" method="post" novalidate>
+            <!-- CSRF Protection -->
+            {{ form.csrf_token }}
             <div>
                 {{ form.csrf_token }}
             </div>
