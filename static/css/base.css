@@ -18,6 +18,16 @@
   border-radius: 4px;
 }
 
+.header ul {
+    display: flex;
+    justify-content: flex;
+    align-items: center;
+}
+
+.header ul li {
+    list-style: none;
+}
+
 /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
 .header a.logo {
   font-size: 25px;
@@ -43,7 +53,7 @@
 }
 
 /* Float the link section to the right */
-.header-right {
+.header-right-user, .header-right-guest {
   float: right;
 }
 
