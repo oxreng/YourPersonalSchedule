@@ -29,7 +29,7 @@ def calendar_month():
 
 @user_blueprint.route('/add')
 def calendar_add():
-    return 'hello man'
+    return render_template('calendar_add.html')
 
 
 @user_blueprint.route('/schedule')
