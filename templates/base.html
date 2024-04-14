@@ -13,21 +13,26 @@
 </head>
 <body>
 <div class="header">
-    <a class="logo" href="/">YourPersonalSchedule</a>
+    <a id="logo" href="/">YourPersonalSchedule</a>
     {% if current_user.is_authenticated %}
     <div class="header-right-user">
         <ul>
             <li><a href="/calendar">Calendar</a></li>
             <li><a href="/notes">Notes</a></li>
             <li><a href="/schedule">Schedule</a></li>
-            <li><a class="profile" href="/account_details/{{current_user.id}}">Profile</a></li>
+            <li>
+                <a class="img" href="/logout">
+                    <img src="../static/img/profile_default.png" alt="profile">
+                </a>
+            </li>
         </ul>
     </div>
     {% else %}
     <div class="header-right-guest">
-
-        <li><a href="/login">Войти</a></li>
-        <li><a class="register" href="/register">Создать аккаунт</a></li>
+        <ul>
+            <li><a href="/login">Войти</a></li>
+            <li><a class="register" href="/register">Создать аккаунт</a></li>
+        </ul>
     </div>
     {% endif %}
 </div>

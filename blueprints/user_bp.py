@@ -23,16 +23,19 @@ def main_page():
 
 
 @user_blueprint.route('/calendar')
+@login_required
 def calendar_month():
     return render_template('calendar.html')
 
 
 @user_blueprint.route('/add')
+@login_required
 def calendar_add():
     return render_template('calendar_add.html')
 
 
 @user_blueprint.route('/schedule')
+@login_required
 def schedule():
     return render_template('schedule.html')
 
