@@ -1,0 +1,27 @@
+{% extends "base_calendar.html" %}
+{% block title%}
+    Add Event
+{% endblock title%}
+{% block body %}
+    <div class="container">
+        <form action="/calendar_add" method="POST">
+          <div class="mb-3">
+            <label for="title" class="form-label">Event title</label>
+            <input type="text" class="form-control" name="title" id="title">x
+          </div>
+          <div class="mb-3">
+            <label for="start" class="form-label">Start date</label>
+            <input type="text" class="form-control" name="start" id="start">
+          </div>
+          <div class="mb-3">
+            <label for="end" class="form-label">End date</label>
+            <input type="text" class="form-control" name="end" id="end">
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" class="form-control" name="description" id="description">
+          </div>
+          <button type="submit" class="btn btn-outline-dark">Submit</button>
+        </form>
+    </div>
+{% endblock %}
