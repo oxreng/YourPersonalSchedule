@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body>*:not(.header) {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logging-form {
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    background: transparent;
+    color: #1a1a1a;
+    border-radius: 10px;
+    border: 2px solid black;
+    padding: 30px 40px;
+    margin-top: 100px
+}
+
+.logging-form h1 {
+    text-align: center;
+}
+
+.logging-form .input-box {
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid #1a1a1a;
+    border-radius: 40px;
+    color: #1a1a1a;
+    padding: 20px 45px 20px 20px
+}
+
+.input-box label {
+    width: 100%;
+    background: transparent;
+}
+
+.logging-form .remember {
+    padding: 10px;
+    justify-content: space-between;
+    font-size: 15px;
+}
+
+.logging-form label {
+    color: #1a1a1a;
+    margin-left: 5px
+}
+
+.logging-form .button {
+    width: 100%;
+    height: 45px;
+    border: none;
+    background: #99ccff;
+    outline: none;
+    border-radius: 40px;
+    border: 2px solid #1a1a1a;
+    color: #1a1a1a;
+    font-weight: 600;
+}

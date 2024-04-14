@@ -3,25 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/login.css" />
 </head>
 <body>
     {% extends "base.html" %}
     {% block content %}
+        {{ form.csrf_token }}
         <form action="" method="post" novalidate>
-            <!-- CSRF Protection -->
-            {{ form.csrf_token }}
-            <div>
-                {{ form.csrf_token }}
-            </div>
-            {% for field in form if field.name != 'csrf_token' %}
-                <div>
-                    {{ field.label() }}
-                    {{ field() }}
-                    {% for error in field.errors %}
-                        <div class="error">{{ error }}</div>
-                    {% endfor %}
+            {{ form.hidden_tag() }}
+            <h1>Вход в аккаунт</h1>
+            <div class="input-box">
+              {{ form.email.label }}
+              {{ form.email(class="form-control", type="email") }}
+              {% for error in form.email.errors %}
+                <div class="alert alert-danger" role="alert">
+                  {{ error }}
                 </div>
-            {% endfor %}
+              {% endfor %}
+            </div>
+            <br>
+            <div class="input-box">
+              {{ form.password.label }}
+              {{ form.password(class="form-control", type="password") }}
+              {% for error in form.password.errors %}
+                <div class="alert alert-danger" role="alert">
+                  {{ error }}
+                </div>
+              {% endfor %}
+            </div>
+            <div class="remember">{{ form.remember_me() }} {{ form.remember_me.label }}</div>
+            <div class="submit">{{ form.submit(type="submit", class="button") }}</div>
+            <div style="color:red">{{ message }}</div>
         </form>
     {% endblock %}
 </body>
