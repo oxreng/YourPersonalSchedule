@@ -27,8 +27,14 @@ def calendar_month():
     return render_template('calendar.html')
 
 
-@user_blueprint.route('/add')
+@user_blueprint.route('/calendar_add_event', methods=['GET', 'POST'])
 def calendar_add():
+    if request.method == 'POST':
+        title = request.form['title']
+        description = request.form['description']
+        start_date = request.form['start']
+        end_date = request.form['end']
+        print(title, start_date, end_date, description)
     return render_template('calendar_add.html')
 
 
