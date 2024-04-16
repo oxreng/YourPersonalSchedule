@@ -8,6 +8,8 @@ from data.database.notes import Note
 from datetime import datetime
 from forms.addnote import AddNoteForm
 from forms.edit_note import EditNoteForm
+from forms.add_task import AddTaskForm
+from data.database.tasks import Task
 
 user_blueprint = Blueprint('user_views', __name__, template_folder='templates')
 
@@ -34,10 +36,35 @@ def calendar_add():
     return render_template('calendar_add.html')
 
 
-@user_blueprint.route('/schedule')
+@user_blueprint.route('/tasks')
 @login_required
-def schedule():
-    return render_template('schedule.html')
+def tasks():
+    return render_template('tasks.html')
+
+
+@user_blueprint.route('/add_task', methods=['GET', 'POST'])
+@login_required
+def add_task():
+    form = AddTaskForm()
+    if form.validate_on_submit():
+        session = db_session.create_session()
+        if datetime.now().date() > form.end_date.data:
+            return render_template('add_task.html',
+                                   form=form,
+                                   message='End date should be later than present')
+        task = Task(
+            user_id=current_user.id,
+            title=form.title.data,
+            content=form.content.data,
+            date_start=form.start_date.data,
+            date_end=form.end_date.data,
+            time_start=form.start_time.data,
+            time_end=form.end_time.data
+        )
+        session.add(task)
+        session.commit()
+        return redirect('/tasks')
+    return render_template('add_task.html', form=form)
 
 
 @user_blueprint.route('/notes', methods=['GET'])
