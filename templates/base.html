@@ -20,10 +20,18 @@
             <li><a href="/calendar">Calendar</a></li>
             <li><a href="/notes">Notes</a></li>
             <li><a href="/tasks">Tasks</a></li>
+            <!-- creating a dropdown menu in the top right corner -->
             <li>
-                <a class="img" href="/logout">
-                    <img src="../static/img/profile_default.png" alt="profile">
-                </a>
+                <div class="profile-dropdown">
+                    <a class="img">
+                        <img src="../static/img/profile_default.png" alt="profile">
+                    </a>
+                    <div class="profile-dropdown-content">
+                        <a href="/settings">Settings</a>
+                        <a href="/switch_themes">Dark mode</a>
+                        <a href="/logout">Logout</a>
+                    </div>
+                </div>
             </li>
         </ul>
     </div>

@@ -26,6 +26,14 @@ body>*:not(.header) {
     text-align: center;
 }
 
+#start-date, #end-date {
+    margin-right: 10px;
+}
+
+#content-inp {
+    margin-top: 50px
+}
+
 .main-content .input-box {
     width: 100%;
     height: 50px;
@@ -40,12 +48,10 @@ body>*:not(.header) {
     width: 100%;
     height: 100%;
     background: transparent;
-    border: none;
-    outline: none;
     border: 2px solid #1a1a1a;
     border-radius: 40px;
     color: #1a1a1a;
-    padding: 20px 45px 20px 20px
+    padding: 20px 20px 20px 20px;
 }
 
 .input-box label {
@@ -74,4 +80,5 @@ body>*:not(.header) {
     border: 2px solid #1a1a1a;
     color: #1a1a1a;
     font-weight: 600;
+    margin-top: 30px;
 }

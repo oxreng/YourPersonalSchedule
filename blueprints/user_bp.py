@@ -52,6 +52,10 @@ def add_task():
             return render_template('add_task.html',
                                    form=form,
                                    message='End date should be later than present')
+        if form.start_date.data > form.end_date.data:
+            return render_template('add_task.html',
+                                   form=form,
+                                   message='End date should be later than start date')
         task = Task(
             user_id=current_user.id,
             title=form.title.data,
