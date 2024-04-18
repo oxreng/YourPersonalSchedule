@@ -9,6 +9,7 @@
 {% block content %}
     <!-- ALL NOTES section -->
     <h2 class="all_notes_title">Мои заметки</h2>
+        {% if notes %}
     <div id="notes-container">
     {% for note in notes %}
         <div class="card" id="note-card">
@@ -31,7 +32,12 @@
             </div>
         </div>
     {% endfor %}
-    <div id="notes-container">
+            </div>
+            {% else %}
+    <div style="font-size: 18px;color:#a6a6a6;text-align:center;margin-top: 20px;">
+        You don`t have any notes yet. Time to plan something!
+    </div>
+    {% endif %}
 
     <!-- ADD note button -->
     <a id="add-note-button" href="{{ url_for('user_views.add_note') }}">
