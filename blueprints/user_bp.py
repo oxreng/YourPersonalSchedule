@@ -5,9 +5,11 @@ from forms.register import RegisterForm
 from flask_login import login_required, login_user, logout_user, current_user
 from data.database.users import User
 from data.database.notes import Note
+from data.database.calendar import Calendar
 from datetime import datetime
 from forms.addnote import AddNoteForm
 from forms.edit_note import EditNoteForm
+from forms.add_event import AddEventForm
 
 user_blueprint = Blueprint('user_views', __name__, template_folder='templates')
 
@@ -25,19 +27,37 @@ def main_page():
 @user_blueprint.route('/calendar')
 @login_required
 def calendar_month():
-    return render_template('calendar.html')
+    session = db_session.create_session()
+    events_db = session.query(Calendar).filter(Calendar.user_id == current_user.id).all()
+    events = []
+    for event in events_db:
+        events.append({
+            'title': event.title,
+            'start': event.start.strftime("%Y-%m-%d"),
+            'end': event.end.strftime("%Y-%m-%d"),
+
+        })
+        print(events)
+
+    return render_template('calendar.html', events=events)
 
 
 @user_blueprint.route('/calendar_add_event', methods=['GET', 'POST'])
 @login_required
 def calendar_add():
-    if request.method == 'POST':
-        title = request.form['title']
-        description = request.form['description']
-        start_date = request.form['start']
-        end_date = request.form['end']
-        print(title, start_date, end_date, description)
-    return render_template('calendar_add.html')
+    form = AddEventForm(request.form)
+    if request.method == 'POST' and form.validate_on_submit():
+        session = db_session.create_session()
+        new_event = Calendar(
+            title=form.title.data,
+            start=form.start_date.data,
+            end=form.start_date.data,
+            user_id=current_user.id
+        )
+        session.add(new_event)
+        session.commit()
+        flash('Мероприятие добавлено ✅', category='success')
+    return render_template('calendar_add.html', form=form)
 
 
 @user_blueprint.route('/schedule')

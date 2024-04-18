@@ -11,8 +11,7 @@ class Calendar(SqlAlchemyBase):
                            primary_key=True, autoincrement=True)
     title = sqlalchemy.Column(sqlalchemy.String, nullable=False)
     user_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("users.id"))
-    text = sqlalchemy.Column(sqlalchemy.String, nullable=True)
-    datetime_start = sqlalchemy.Column(sqlalchemy.DateTime)
-    datetime_end = sqlalchemy.Column(sqlalchemy.DateTime)
+    start = sqlalchemy.Column(sqlalchemy.DateTime)
+    end = sqlalchemy.Column(sqlalchemy.DateTime)
 
     users_relationship = orm.relationship("User", back_populates="calendar_relationship")
