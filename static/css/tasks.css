@@ -165,7 +165,8 @@ p.task-content {
 b.task-title {
     width: 100px;
     margin-right: 20px;
-    margin-left: 20px
+    margin-left: 20px;
+    word-wrap: break-word;
 }
 
 .task-dates {
