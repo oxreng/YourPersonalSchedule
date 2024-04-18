@@ -23,11 +23,13 @@ def main_page():
 
 
 @user_blueprint.route('/calendar')
+@login_required
 def calendar_month():
     return render_template('calendar.html')
 
 
 @user_blueprint.route('/calendar_add_event', methods=['GET', 'POST'])
+@login_required
 def calendar_add():
     if request.method == 'POST':
         title = request.form['title']
