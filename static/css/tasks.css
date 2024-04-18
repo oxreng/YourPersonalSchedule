@@ -26,6 +26,7 @@
 
 /* main body */
 
+/* radio buttons
 
 
 .radio {
@@ -54,6 +55,8 @@
 	font-size: 16px;
 	transition: all 100ms linear;
 	margin: 4px;
+	border: 2px solid #e6e6e6;
+    border-radius: 5px;
 }
 
 .radio #sort-by-start {
@@ -80,17 +83,20 @@
     text-align: center;
     width: 100%;
 }
+ */
 
-
-.task-container {
+.task-container:not(.task-dates) {
     display: flex;
 }
+
+/* checkboxes */
 
 .task-checkbox {
     display: block;
     position: relative;
     padding-left: 35px;
-    margin-bottom: 12px;
+    margin-bottom: 25px;
+    margin-left: 10px;
     cursor: pointer;
     font-size: 22px;
     -webkit-user-select: none;
@@ -144,4 +150,67 @@
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+/* task boxes */
+
+p.task-content {
+    width: 250px;
+    word-wrap: break-word;
+    font-style: italic;
+    color: #737373;
+    margin-right: 40px;
+}
+
+b.task-title {
+    width: 100px;
+    margin-right: 20px;
+    margin-left: 20px
+}
+
+.task-dates {
+    width: 150px;
+    font-size: 12px;
+    color: #737373;
+}
+
+.task-dates p {
+    margin-top: 0px;
+    margin-bottom: 0px
+}
+
+.task-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.task-buttons a img {
+    width: 30px;
+    border-radius: 5px;
+    border: 2px solid #404040;
+    padding: 4px
+}
+
+.task-buttons a img:hover {
+    background-color: #ddd
+}
+
+#edit-button-active, #edit-button-inactive {
+    margin-left: 40px;
+    margin-right: 20px;
+}
+
+.task-container {
+    border: 2px solid #333333;
+    border-radius: 20px;
+    padding: 20px;
+    align-items: center;
+    max-width: 800px;
+    overflow: auto;
+}
+
+hr {
+    width: 70%;
+    text-align: left;
+    margin-left: 10px
 }
