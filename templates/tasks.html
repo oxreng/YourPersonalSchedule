@@ -2,13 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../static/css/tasks.css">
     <title>Title</title>
 </head>
 <body>
     {% extends "base.html" %}
     {% block content %}
-        <h1>Schedule</h1>
-    <a href="/add_task">Add New Task</a>
+    <div class="page-title">
+        <h1>Your Tasks</h1>
+        <a class="add_button" href="/add_task">
+            <img src="../static/img/plus.png" alt="add a new task">
+        </a>
+    </div>
+    {% set sortby = 0 %}
+    <b style="margin-left:10px;">Sort by:</b>
+    <div class="radio">
+        <input label="Start Date" type="radio" id="sort-by-start" name="sort" checked>
+        <input label="End Date" type="radio" id="sort-by-end" name="sort">
+    </div>
+    {% for task in tasks %}
+    <div class="task-container">
+        <label class="task-checkbox">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+        </label>
+        <b>{{task.title}}</b>
+        {% if task.content %}
+        <i>{{task.content}}</i>
+        {% endif %}
+    </div>
+    <hr>
+    {% endfor %}
     {% endblock %}
 </body>
 </html>

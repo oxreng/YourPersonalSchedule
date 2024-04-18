@@ -95,6 +95,11 @@
   color: white;
 }
 
+.header a.active:hover:not(.img) {
+  background-color: #4dc3ff;
+  color: white;
+}
+
 .header a.register {
     border-radius: 4px;
     border: 2px solid #ff99ff;

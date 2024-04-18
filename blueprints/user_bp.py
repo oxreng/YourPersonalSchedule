@@ -39,7 +39,8 @@ def calendar_add():
 @user_blueprint.route('/tasks')
 @login_required
 def tasks():
-    return render_template('tasks.html')
+    tasks_list = db_session.create_session().query(Task).all()
+    return render_template('tasks.html', tasks=tasks_list)
 
 
 @user_blueprint.route('/add_task', methods=['GET', 'POST'])
