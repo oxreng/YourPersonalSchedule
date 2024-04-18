@@ -5,6 +5,9 @@
 {% block body %}
     <div class="container">
         <form action="/calendar_add_event" method="POST">
+            <div>
+                {{ form.csrf_token }}
+            </div>
           <div class="mb-3">
             <label for="title" class="form-label">Event title</label>
             <input type="text" class="form-control" name="title" id="title">
