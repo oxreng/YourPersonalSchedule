@@ -34,9 +34,9 @@ def calendar_month():
         events.append({
             'title': event.title,
             'start': event.start.strftime("%Y-%m-%d"),
-            'end': event.end.strftime("%Y-%m-%d"),
-
+            'end': event.end.strftime("%Y-%m-%d")
         })
+        print(event.end.strftime("%Y-%m-%d"))
         print(events)
 
     return render_template('calendar.html', events=events)
@@ -50,13 +50,16 @@ def calendar_add():
         session = db_session.create_session()
         new_event = Calendar(
             title=form.title.data,
-            start=form.start_date.data,
-            end=form.start_date.data,
+            start=form.start.data,
+            end=form.end.data,
             user_id=current_user.id
         )
+        print(form.title.data,
+            form.start.data,
+            form.end.data,
+            current_user.id)
         session.add(new_event)
         session.commit()
-        flash('Мероприятие добавлено ✅', category='success')
     return render_template('calendar_add.html', form=form)
 
 
