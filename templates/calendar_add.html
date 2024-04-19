@@ -1,25 +1,21 @@
-{% extends "base_calendar.html" %}
-{% block title%}
-    Add Event
-{% endblock title%}
-{% block body %}
+{% extends "base.html" %}
+{% block content %}
     <div class="container">
-        <form action="/calendar_add" method="POST">
+        <form action="/calendar_add_event" method="POST">
+            <div>
+                {{ form.csrf_token }}
+            </div>
           <div class="mb-3">
             <label for="title" class="form-label">Event title</label>
-            <input type="text" class="form-control" name="title" id="title">x
+            <input type="text" class="form-control" name="title" id="title">
           </div>
           <div class="mb-3">
             <label for="start" class="form-label">Start date</label>
-            <input type="text" class="form-control" name="start" id="start">
+            <input type="date" class="form-control" name="start" id="start">
           </div>
           <div class="mb-3">
             <label for="end" class="form-label">End date</label>
-            <input type="text" class="form-control" name="end" id="end">
-          </div>
-          <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-            <input type="text" class="form-control" name="description" id="description">
+            <input type="date" class="form-control" name="end" id="end">
           </div>
           <button type="submit" class="btn btn-outline-dark">Submit</button>
         </form>
