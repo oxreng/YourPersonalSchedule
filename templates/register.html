@@ -2,18 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../static/css/register.css" />
     <title>Title</title>
 </head>
 <body>
     {% extends "base.html" %}
     {% block content %}
-      <h1>Создание аккаунта</h1>
+    <div class='new_account'>
+          <h1>Создание аккаунта</h1>
         <!-- CSRF Protection -->
         {{ form.csrf_token }}
 
       <form action="" method="post">
         {{ form.hidden_tag() }}
-        <p>
+
+        <div class="input-box">
           {{ form.name.label }}
           {{ form.name(class="form-control", type="string") }}
           {% for error in form.name.errors %}
@@ -21,8 +24,8 @@
               {{ error }}
             </div>
           {% endfor %}
-        </p>
-        <p>
+        </div>
+        <div class="input-box">
           {{ form.email.label }}
           {{ form.email(class="form-control", type="email") }}
           {% for error in form.email.errors %}
@@ -30,8 +33,8 @@
               {{ error }}
             </div>
           {% endfor %}
-        </p>
-        <p>
+        </div>
+        <div class="input-box">
           {{ form.password.label }}
           {{ form.password(class="form-control", type="password") }}
           {% for error in form.password.errors %}
@@ -39,8 +42,8 @@
               {{ error }}
             </div>
           {% endfor %}
-        </p>
-        <p>
+        </div>
+        <div class="input-box">
           {{ form.password_again.label }}
           {{ form.password_again(class="form-control", type="password") }}
           {% for error in form.password_again.errors %}
@@ -48,8 +51,8 @@
               {{ error }}
             </div>
           {% endfor %}
-        </p>
-        <p>
+        </div>
+        <div class="input-box">
             {{ form.bday.label }}<br>
             {{ form.bday(class="form-control", type="date") }}
             {% for error in form.bday.errors %}
@@ -57,12 +60,14 @@
                     {{ error }}
                 </div>
             {% endfor %}
-            <br>
-        </p>
-        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-        <p>{{ form.submit(type="submit", class="button") }}</p>
-        <div style="color:red">{{ message }}</div>
+        </div>
+
+        <div class="remember">{{ form.remember_me() }} {{ form.remember_me.label }}</div>
+        <div class="input-box button">{{ form.submit(type="submit", class="button") }}
+        <div style="color:red">{{ message }}</div></div>
+
       </form>
+    </div>
     {% endblock %}
 </body>
 </html>
