@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../static/css/notes.css" />
+    <title>Notes</title>
 </head>
 <body>
 {% extends "base.html" %}
 {% block content %}
     <!-- ALL NOTES section -->
-    <h2 class="all_notes_title">Мои заметки</h2>
+    <div class="page-title">
+        <h1>Your Notes</h1>
+        <a class="add_note_button" href="/add_note">
+            <img src="../static/img/plus.png" alt="add a new note">
+        </a>
+    </div>
         {% if notes %}
     <div id="notes-container">
     {% for note in notes %}
@@ -38,11 +44,6 @@
         You don`t have any notes yet. Time to plan something!
     </div>
     {% endif %}
-
-    <!-- ADD note button -->
-    <a id="add-note-button" href="{{ url_for('user_views.add_note') }}">
-        <i title="Добавить заметку" class="fa fa-plus-circle fa-5x"></i>
-    </a>
 
 {% endblock %}
 </body>

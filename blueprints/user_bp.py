@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, redirect, url_for, flash, abort
 from data.database import db_session
 from forms.login import LoginForm
 from forms.register import RegisterForm
@@ -7,12 +7,11 @@ from data.database.users import User
 from data.database.notes import Note
 from data.database.calendar import Calendar
 from datetime import datetime
-from forms.addnote import AddNoteForm
+from forms.add_note import AddNoteForm
 from forms.edit_note import EditNoteForm
 from forms.add_event import AddEventForm
 from forms.add_task import AddTaskForm
 from data.database.tasks import Task
-from random import choice
 
 user_blueprint = Blueprint('user_views', __name__, template_folder='templates')
 
@@ -59,7 +58,7 @@ def calendar_add():
         )
         session.add(new_event)
         session.commit()
-        flash('Мероприятие добавлено ✅', category='success')
+        flash('Event added ✅', category='success')
     return render_template('calendar_add.html', form=form)
 
 
