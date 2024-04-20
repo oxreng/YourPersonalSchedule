@@ -52,7 +52,8 @@ def add_event():
             title=form.title.data,
             start=form.start.data,
             end=form.end.data,
-            user_id=current_user.id
+            user_id=current_user.id,
+            color=form.color.data
         )
         session.add(new_event)
         session.commit()

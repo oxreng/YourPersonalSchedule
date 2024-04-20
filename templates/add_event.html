@@ -1,26 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="container">
+    <div class="container_form">
+        <h1>Add event</h1>
         <form action="/calendar_add_event" method="POST">
             <div>
                 {{ form.csrf_token }}
             </div>
 
-            <div class="mb-3">
+            <div class="box">
                 <label for="title" class="form-label">Event title</label>
                 <input type="text" class="form-control" name="title" id="title">
             </div>
 
-            <div class="mb-3">
-                <label for="start" class="form-label">Start date</label>
-                <input type="date" class="form-control" name="start" id="start">
+            <div class="box">
+                {{ form.start.label }}
+                {{ form.start(class="form-control", type="date") }}
             </div>
-
-            <div class="mb-3">
-                <label for="end" class="form-label">End date</label>
-                <input type="date" class="form-control" name="end" id="end">
+            <div class="box">
+                 {{ form.end.label }}
+                 {{ form.end(class="form-control", type="date") }}
             </div>
-            <div class="mb-3">
+            <div class="box">
                 <label for="colors">Сhoose the color of the event</label>
                 <input type="color" list="colors" id="color" class="choose_color"/>
                 <datalist id="colors">
@@ -35,7 +35,7 @@
                     <option value="#C6D8FF"></option>
                 </datalist>
             </div>
-            <div>
+            <div class="buttons">
                 <button type="submit" class="btn btn-outline-dark">Submit</button>
                 <a title="Cancel" class="btn btn-outline-dark" href="{{ url_for('user_views.calendar') }}" role="button">Cancel</a>
             </div>
