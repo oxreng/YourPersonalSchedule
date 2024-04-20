@@ -6,15 +6,15 @@
             <div>
                 {{ form.csrf_token }}
             </div>
-          <div class="input-box">
+          <div class="box">
               {{ form.title.label(class="form-label", for="title") }}
               {{ form.title(class="form-control", id="title", value=event.title) }}
             </div>
-            <div class="input-box">
+            <div class="box">
                   {{ form.start.label(for="start") }}
                   {{ form.start(class="form-control", type="date", id="start", value=event.start) }}
           </div>
-          <div class="input-box">
+          <div class="box">
                   {{ form.end.label(for="end") }}
                   {{ form.end(class="form-control", type="date", id="end", value=event.end) }}
           </div>

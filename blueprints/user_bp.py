@@ -37,7 +37,8 @@ def calendar():
             'id': event.id,
             'title': event.title,
             'start': event.start.strftime("%Y-%m-%d"),
-            'end': (event.end + timedelta(days=1)).strftime("%Y-%m-%d")
+            'end': (event.end + timedelta(days=1)).strftime("%Y-%m-%d"),
+            'color': event.color
         })
     return render_template('calendar.html', events=events)
 
