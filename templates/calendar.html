@@ -32,21 +32,11 @@
                 firstDay: 1,
                 droppable: true,
                 dayMaxEvents: true,
-                editable: true,
 
                 headerToolbar: {
                   start: 'button today',
                   center: 'title',
                   end: 'prevYear,prev,next,nextYear'
-                },
-
-
-                eventDrop: function(info) {
-                    var event = info.event;
-                    var startDate = event.start;
-                    var endDate = event.end;
-                    console.log('Событие было перемещено на новую дату: ', event.end);
-                    // Здесь вы можете выполнить необходимые действия с новой датой
                 },
 
                 events: 'https://fullcalendar.io/api/demo-feeds/events.json?overload-day',

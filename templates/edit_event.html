@@ -20,6 +20,7 @@
           <div>
               <button type="submit" class="btn btn-outline-dark">Submit</button>
               <a title="Cancel" class="btn btn-outline-dark" href="{{ url_for('user_views.calendar') }}" role="button">Cancel</a>
+              <a title="Delete" class="btn btn-outline-dark" href="/calendar_delete_event/{{event.id}}" role="button">Delete</a>
           </div>
 
         </form>

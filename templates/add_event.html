@@ -5,22 +5,40 @@
             <div>
                 {{ form.csrf_token }}
             </div>
-          <div class="mb-3">
-            <label for="title" class="form-label">Event title</label>
-            <input type="text" class="form-control" name="title" id="title">
-          </div>
-          <div class="mb-3">
-            <label for="start" class="form-label">Start date</label>
-            <input type="date" class="form-control" name="start" id="start">
-          </div>
-          <div class="mb-3">
-            <label for="end" class="form-label">End date</label>
-            <input type="date" class="form-control" name="end" id="end">
-          </div>
-          <div>
-              <button type="submit" class="btn btn-outline-dark">Submit</button>
-              <a title="Cancel" class="btn btn-outline-dark" href="{{ url_for('user_views.calendar') }}" role="button">Cancel</a>
-          </div>
+
+            <div class="mb-3">
+                <label for="title" class="form-label">Event title</label>
+                <input type="text" class="form-control" name="title" id="title">
+            </div>
+
+            <div class="mb-3">
+                <label for="start" class="form-label">Start date</label>
+                <input type="date" class="form-control" name="start" id="start">
+            </div>
+
+            <div class="mb-3">
+                <label for="end" class="form-label">End date</label>
+                <input type="date" class="form-control" name="end" id="end">
+            </div>
+            <div class="mb-3">
+                <label for="colors">Сhoose the color of the event</label>
+                <input type="color" list="colors" id="color" class="choose_color"/>
+                <datalist id="colors">
+                    <option value="#FED6BC"></option>
+                    <option value="#FDEED9"></option>
+                    <option value="#FFFADD"></option>
+                    <option value="#F6FFF8"></option>
+                    <option value="#C3FBD8"></option>
+                    <option value="#E7ECFF"></option>
+                    <option value="#B5F2EA"></option>
+                    <option value="#DEF7FE"></option>
+                    <option value="#C6D8FF"></option>
+                </datalist>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-outline-dark">Submit</button>
+                <a title="Cancel" class="btn btn-outline-dark" href="{{ url_for('user_views.calendar') }}" role="button">Cancel</a>
+            </div>
 
         </form>
 

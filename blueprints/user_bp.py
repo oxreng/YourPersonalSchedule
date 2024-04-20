@@ -42,7 +42,7 @@ def calendar():
 
 @user_blueprint.route('/calendar_add_event', methods=['GET', 'POST'])
 @login_required
-def calendar_add():
+def add_event():
     form = EventForm(request.form)
     if request.method == 'POST' and form.validate_on_submit():
         session = db_session.create_session()
@@ -61,7 +61,7 @@ def calendar_add():
 
 @user_blueprint.route('/calendar_edit_event/<event_id>', methods=['GET', 'POST'])
 @login_required
-def calendar_edit(event_id):
+def edit_event(event_id):
     form = EventForm(request.form)
     session = db_session.create_session()
     event = session.query(Calendar).filter(event_id == Calendar.id).first()
@@ -76,14 +76,14 @@ def calendar_edit(event_id):
     return render_template('edit_event.html', form=form, event=event)
 
 
-@user_blueprint.route('/delete_event/<event_id>', methods=['GET'])
+@user_blueprint.route('/calendar_delete_event/<event_id>', methods=['GET'])
 @login_required
 def delete_event(event_id):
     session = db_session.create_session()
     event = session.query(Calendar).filter(event_id == Calendar.id).first()
     session.delete(event)
     session.commit()
-    flash("Note deleted 🗑️", category='success')
+    flash("Event deleted 🗑️", category='success')
     return redirect(url_for('user_views.calendar'))
 
 
