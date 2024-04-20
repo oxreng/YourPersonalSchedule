@@ -99,8 +99,10 @@ def schedule():
 @login_required
 def tasks():
     session = db_session.create_session()
-    active_tasks = sorted(session.query(Task).filter(Task.active == True).all(), key=lambda x: x.date_start)
-    inactive_tasks = sorted(session.query(Task).filter(Task.active == False).all(), key=lambda x: x.date_start)
+    active_tasks = sorted(session.query(Task).filter(Task.active == True and Task.user_id == current_user.id).all(),
+                          key=lambda x: x.date_start)
+    inactive_tasks = sorted(session.query(Task).filter(Task.active == False and Task.user_id == current_user.id).all(),
+                            key=lambda x: x.date_start)
     for task in active_tasks:
         task.date_start = task.date_start.strftime("%Y/%m/%d")
         task.date_end = task.date_end.strftime("%Y/%m/%d")
