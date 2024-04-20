@@ -6,7 +6,7 @@ from flask_login import login_required, login_user, logout_user, current_user
 from data.database.users import User
 from data.database.notes import Note
 from data.database.calendar import Calendar
-from datetime import datetime
+from datetime import datetime, timedelta
 from forms.addnote import AddNoteForm
 from forms.edit_note import EditNoteForm
 from forms.event import EventForm
@@ -35,7 +35,7 @@ def calendar():
             'id': event.id,
             'title': event.title,
             'start': event.start.strftime("%Y-%m-%d"),
-            'end': event.end.strftime("%Y-%m-%d")
+            'end': (event.end + timedelta(days=1)).strftime("%Y-%m-%d")
         })
     return render_template('calendar.html', events=events)
 
@@ -74,6 +74,17 @@ def calendar_edit(event_id):
         session.commit()
         return redirect(url_for('user_views.calendar'))
     return render_template('edit_event.html', form=form, event=event)
+
+
+@user_blueprint.route('/delete_event/<event_id>', methods=['GET'])
+@login_required
+def delete_event(event_id):
+    session = db_session.create_session()
+    event = session.query(Calendar).filter(event_id == Calendar.id).first()
+    session.delete(event)
+    session.commit()
+    flash("Note deleted 🗑️", category='success')
+    return redirect(url_for('user_views.calendar'))
 
 
 @user_blueprint.route('/schedule')

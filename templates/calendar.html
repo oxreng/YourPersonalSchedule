@@ -45,7 +45,7 @@
                     var event = info.event;
                     var startDate = event.start;
                     var endDate = event.end;
-                    console.log('Событие было перемещено на новую дату: ', newDate);
+                    console.log('Событие было перемещено на новую дату: ', event.end);
                     // Здесь вы можете выполнить необходимые действия с новой датой
                 },
 
@@ -64,8 +64,9 @@
                         id: '{{ event.id }}',
                         title: '{{ event.title }}',
                         start: '{{ event.start }}',
-                        end: '{{ event.end }}',
+                        end: '{{ event.end }}'
                     },
+
                     {% endfor %}
                 ],
 
