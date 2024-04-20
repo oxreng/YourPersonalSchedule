@@ -7,10 +7,8 @@ from data.database.users import User
 from data.database.notes import Note
 from data.database.calendar import Calendar
 from datetime import datetime, timedelta
-from forms.addnote import AddNoteForm
 from forms.add_note import AddNoteForm
 from forms.edit_note import EditNoteForm
-from forms.add_event import AddEventForm
 from forms.add_task import AddTaskForm
 from data.database.tasks import Task
 from forms.event import EventForm
