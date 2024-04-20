@@ -4,10 +4,9 @@ from wtforms.validators import DataRequired, Length
 import datetime as dt
 
 
-class AddEventForm(FlaskForm):
+class EventForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     start = DateField('Start Date', validators=[DataRequired()],
                            default=dt.datetime.now().date())
     end = DateField('End Date', validators=[DataRequired()],
                          default=dt.datetime.now().date())
-    submit = SubmitField('Add')

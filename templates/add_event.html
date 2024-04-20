@@ -17,7 +17,12 @@
             <label for="end" class="form-label">End date</label>
             <input type="date" class="form-control" name="end" id="end">
           </div>
-          <button type="submit" class="btn btn-outline-dark">Submit</button>
+          <div>
+              <button type="submit" class="btn btn-outline-dark">Submit</button>
+              <a title="Cancel" class="btn btn-outline-dark" href="{{ url_for('user_views.calendar') }}" role="button">Cancel</a>
+          </div>
+
         </form>
+
     </div>
 {% endblock %}

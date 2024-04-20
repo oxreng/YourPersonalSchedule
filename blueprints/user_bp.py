@@ -12,6 +12,7 @@ from forms.edit_note import EditNoteForm
 from forms.add_event import AddEventForm
 from forms.add_task import AddTaskForm
 from data.database.tasks import Task
+from forms.event import EventForm
 
 user_blueprint = Blueprint('user_views', __name__, template_folder='templates')
 
@@ -28,26 +29,24 @@ def main_page():
 
 @user_blueprint.route('/calendar')
 @login_required
-def calendar_month():
+def calendar():
     session = db_session.create_session()
     events_db = session.query(Calendar).filter(Calendar.user_id == current_user.id).all()
     events = []
     for event in events_db:
         events.append({
+            'id': event.id,
             'title': event.title,
             'start': event.start.strftime("%Y-%m-%d"),
             'end': event.end.strftime("%Y-%m-%d")
         })
-        print(event.end.strftime("%Y-%m-%d"))
-        print(events)
-
     return render_template('calendar.html', events=events)
 
 
 @user_blueprint.route('/calendar_add_event', methods=['GET', 'POST'])
 @login_required
 def calendar_add():
-    form = AddEventForm(request.form)
+    form = EventForm(request.form)
     if request.method == 'POST' and form.validate_on_submit():
         session = db_session.create_session()
         new_event = Calendar(
@@ -56,14 +55,29 @@ def calendar_add():
             end=form.end.data,
             user_id=current_user.id
         )
-        print(form.title.data,
-            form.start.data,
-            form.end.data,
-            current_user.id)
         session.add(new_event)
         session.commit()
         flash('Event added ✅', category='success')
-    return render_template('calendar_add.html', form=form)
+
+        return redirect(url_for('user_views.calendar'))
+    return render_template('add_event.html', form=form)
+
+
+@user_blueprint.route('/calendar_edit_event/<event_id>', methods=['GET', 'POST'])
+@login_required
+def calendar_edit(event_id):
+    form = EventForm(request.form)
+    session = db_session.create_session()
+    event = session.query(Calendar).filter(event_id == Calendar.id).first()
+    event.start = event.start.strftime("%Y-%m-%d")
+    event.end = event.end.strftime("%Y-%m-%d")
+    if request.method == 'POST' and form.validate_on_submit():
+        event.title = form.title.data
+        event.start = form.start.data
+        event.end = form.end.data
+        session.commit()
+        return redirect(url_for('user_views.calendar'))
+    return render_template('edit_event.html', form=form, event=event)
 
 
 @user_blueprint.route('/tasks')
