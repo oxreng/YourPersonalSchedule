@@ -5,21 +5,21 @@
             <div>
                 {{ form.csrf_token }}
             </div>
-          <div class="form-group">
-                {{ form.title.label(class="form-label", for="editevent-title") }}
-                {{ form.title(class="form-control", id="editevent-title", value=event.title) }}
+          <div class="input-box">
+              {{ form.title.label(class="form-label", for="title") }}
+              {{ form.title(class="form-control", id="title", value=event.title) }}
+            </div>
+            <div class="input-box">
+                  {{ form.start.label(for="start") }}
+                  {{ form.start(class="form-control", type="date", id="start", value=event.start) }}
           </div>
-          <div class="mb-3">
-            <label for="start" class="form-label">Start date</label>
-            <input type="date" class="form-control" name="start" id="start">
-          </div>
-          <div class="mb-3">
-            <label for="end" class="form-label">End date</label>
-            <input type="date" class="form-control" name="end" id="end">
+          <div class="input-box">
+                  {{ form.end.label(for="end") }}
+                  {{ form.end(class="form-control", type="date", id="end", value=event.end) }}
           </div>
           <div>
               <button type="submit" class="btn btn-outline-dark">Submit</button>
-              <a title="Cancel" class="btn btn-dark" href="{{ url_for('user_views.calendar') }}" role="button">Cancel</a>
+              <a title="Cancel" class="btn btn-outline-dark" href="{{ url_for('user_views.calendar') }}" role="button">Cancel</a>
           </div>
 
         </form>

@@ -71,7 +71,7 @@
 
                 eventClick: function(info) {
                 var eventid = info.event.id;
-                window.open('/calendar_edit_event/' + eventid);
+                window.location = '/calendar_edit_event/' + eventid;
                 }
             })
             calendar.render()

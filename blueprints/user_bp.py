@@ -65,6 +65,8 @@ def calendar_edit(event_id):
     form = EventForm(request.form)
     session = db_session.create_session()
     event = session.query(Calendar).filter(event_id == Calendar.id).first()
+    event.start = event.start.strftime("%Y-%m-%d")
+    event.end = event.end.strftime("%Y-%m-%d")
     if request.method == 'POST' and form.validate_on_submit():
         event.title = form.title.data
         event.start = form.start.data
