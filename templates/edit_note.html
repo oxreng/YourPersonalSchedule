@@ -1,8 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../static/css/notes.css" />
+    <title>Edit Note</title>
+</head>
+<body>
 {% extends "base.html" %}
 {% block content %}
     <div class="addnote-form-container">
         <form method="post" action="/edit_note/{{ note.note_id }}">
-            <h2>Изменить заметку</h2>
+            <h2>Edit Note</h2>
             <!-- CSRF Protection -->
             {{ form.csrf_token }}
 
@@ -19,14 +27,16 @@
             </div>
 
             <!-- Submit/Edit note button -->
-            <button title="Edit note" type="submit" class="btn btn-primary">Изменить заметку</button>
+            <button title="Edit note" type="submit" class="btn btn-primary">Edit Note</button>
 
             <!-- Cancel button -->
             <a title="Cancel" class="btn btn-primary" href="{{ url_for('user_views.notes') }}"
-               role="button">Отмена</a>
+               role="button">Cancel</a>
         </form>
     </div>
     <script>
         document.querySelector('#editnote-content').value = `{{note.content}}`;
     </script>
 {% endblock %}
+</body>
+</html>

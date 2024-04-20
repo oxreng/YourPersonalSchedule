@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../static/css/tasks.css">
+    <title>Tasks</title>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+    <div class="page-title">
+        <h1>Your Tasks</h1>
+        <a class="add_button" href="/add_task">
+            <img src="../static/img/plus.png" alt="add a new task">
+        </a>
+    </div>
+<!--    <b style="margin-left:10px;">Sort by:</b>-->
+<!--    <div class="radio">-->
+<!--        <input label="Start Date" onclick="sortList()" type="radio" id="sort-by-start" name="sort" checked>-->
+<!--        <input label="End Date" type="radio" id="sort-by-end" name="sort">-->
+<!--    </div>-->
+    <h3 style="margin-bottom: 20px;">Active:</h3>
+    {% if active_tasks %}
+    {% for task in active_tasks %}
+        <div class="task-container">
+            <label class="task-checkbox">
+                <input type="checkbox"
+                       onclick="window.location.href='{{url_for('user_views.change_task_state', task_id=task.id)}}';">
+                <span class="checkmark"></span>
+            </label>
+            <b class="task-title">{{task.title}}</b>
+            {% if task.content %}
+            <p class="task-content">{{ task.content|replace('\n', '<br>')|safe }}</p>
+            {% else %}
+            <p class="task-content" style="color:#a6a6a6">____________</p>
+            {% endif %}
+            <div class="dates-container">
+                <div class="task-dates">
+                    <p>From: {{task.date_start}} {{task.time_start}}</p>
+                    <p>To: {{task.date_end}} {{task.time_end}}</p>
+                </div>
+            </div>
+            <div class="task-buttons">
+                <a id="edit-button-active" href="/edit_task/{{task.id}}">
+                    <img src="../static/img/pencil.png" alt="Edit task">
+                </a>
+                <a href="/delete_task/{{task.id}}">
+                    <img src="../static/img/bin.png" alt="Delete task">
+                </a>
+            </div>
+        </div>
+    <hr>
+    {% endfor %}
+    {% else %}
+    <i style="font-size: 16px;color:#a6a6a6;margin-left:10px;">
+        You don`t have any tasks yet. Time to plan something!
+    </i>
+    {% endif %}
+
+    <h3 style="margin-bottom: 20px;">Inactive:</h3>
+    {% if inactive_tasks %}
+    {% for task in inactive_tasks %}
+        <div class="task-container">
+            <label class="task-checkbox">
+                <input type="checkbox"
+                       onclick="window.location.href='{{url_for('user_views.change_task_state', task_id=task.id)}}';"
+                       checked>
+                <span class="checkmark"></span>
+            </label>
+            <b class="task-title">{{task.title}}</b>
+            {% if task.content %}
+            <p class="task-content">{{ task.content|replace('\n', '<br>')|safe }}</p>
+            {% else %}
+            <p class="task-content" style="color:#a6a6a6">____________</p>
+            {% endif %}
+            <div class="dates-container">
+                <div class="task-dates">
+                    <p>From: {{task.date_start}} {{task.time_start}}</p>
+                    <p>To: {{task.date_end}} {{task.time_end}}</p>
+                </div>
+            </div>
+            <div class="task-buttons">
+                <a id="edit-button-inactive" href="/edit_task/{{task.id}}">
+                    <img src="../static/img/pencil.png" alt="Edit task">
+                </a>
+                <a href="/delete_task/{{task.id}}">
+                    <img src="../static/img/bin.png" alt="Delete task">
+                </a>
+            </div>
+        </div>
+    <hr style="">
+    {% endfor %}
+    {% else %}
+    <i style="font-size: 16px;color:#a6a6a6;margin-left:10px;">
+        There`s nothing here yet. Your completed tasks will be displayed here!
+    </i>
+    {% endif %}
+    {% endblock %}
+</body>
+</html>

@@ -2,16 +2,11 @@ from flask import Flask
 from data.database import db_session
 from flask_login import LoginManager
 from flask_wtf.csrf import CSRFProtect
-import locale
 
 from blueprints import user_bp
 
 
 def create_app():
-    locale.setlocale(
-        category=locale.LC_ALL,
-        locale="Russian"  # Note: do not use "de_DE" as it doesn't work
-    )
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'MICHAEL_JORDAN_THE_BEST'
 

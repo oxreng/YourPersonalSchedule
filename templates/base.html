@@ -14,18 +14,36 @@
 </head>
 <body>
 <div class="header">
-    <a class="logo" href="/">YourPersonalSchedule</a>
-    <div class="header-right">
-        {% if current_user.is_authenticated %}
-        <a class="active" href="/calendar">Calendar</a>
-        <a href="/notes">Notes</a>
-        <a href="/schedule">Schedule</a>
-        <a class="profile" href="/account_details/{{current_user.id}}">Profile</a>
-        {% else %}
-        <a href="/login">Войти</a>
-        <a class="register" href="/register">Создать аккаунт</a>
-        {% endif %}
+    <a id="logo" href="/">YourPersonalSchedule</a>
+    {% if current_user.is_authenticated %}
+    <div class="header-right-user">
+        <ul>
+            <li><a href="/calendar">Calendar</a></li>
+            <li><a href="/notes">Notes</a></li>
+            <li><a href="/tasks">Tasks</a></li>
+            <!-- creating a dropdown menu in the top right corner -->
+            <li>
+                <div class="profile-dropdown">
+                    <a class="img">
+                        <img src="../static/img/profile_default.png" alt="profile">
+                    </a>
+                    <div class="profile-dropdown-content">
+                        <a href="/settings">Settings</a>
+                        <a href="/switch_themes">Dark mode</a>
+                        <a href="/logout">Logout</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
+    {% else %}
+    <div class="header-right-guest">
+        <ul>
+            <li><a href="/login">Войти</a></li>
+            <li><a class="register" href="/register">Создать аккаунт</a></li>
+        </ul>
+    </div>
+    {% endif %}
 </div>
 <!-- Error Message -->
 {% with messages = get_flashed_messages(with_categories=true) %}
@@ -61,8 +79,10 @@
         {% endfor %}
     {% endif %}
 {% endwith %}
-<main role="main" class="container" style="margin-left:center;text-align:center">
+<main role="main" class="container">
+    <div class="main-content">
     {% block content %}{% endblock %}
+    </div>
 </main>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -73,6 +93,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<script src="{{ url_for('static', filename='script/script.js') }}"></script>
+<script src="../static/script/script.js"></script>
+<script src="../static/script/header.js"></script>
 </body>
 </html>
