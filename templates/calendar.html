@@ -27,16 +27,20 @@
             document.addEventListener('DOMContentLoaded', function() {
             const calendarEl = document.getElementById('calendar')
             const calendar = new FullCalendar.Calendar(calendarEl, {
+
                 initialView: 'dayGridMonth',
                 firstDay: 1,
+                droppable: true,
+                dayMaxEvents: true,
+                editable: true,
+
                 headerToolbar: {
                   start: 'button today',
                   center: 'title',
                   end: 'prevYear,prev,next,nextYear'
                 },
-                editable: true,
-                droppable: true,
-                dayMaxEvents: true,
+
+
                 eventDrop: function(info) {
                     var event = info.event;
                     var startDate = event.start;
@@ -57,12 +61,18 @@
                 events: [
                     {% for event in events %}
                     {
+                        id: '{{ event.id }}',
                         title: '{{ event.title }}',
                         start: '{{ event.start }}',
                         end: '{{ event.end }}',
                     },
                     {% endfor %}
-                ]
+                ],
+
+                eventClick: function(info) {
+                var eventid = info.event.id;
+                window.open('/calendar_edit_event/' + eventid);
+                }
             })
             calendar.render()
           })

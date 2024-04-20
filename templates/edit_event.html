@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="container">
-        <form action="/calendar_add_event" method="POST">
+        <form action="/calendar_edit_event/{{ event.id }}" method="POST">
             <div>
                 {{ form.csrf_token }}
             </div>
-          <div class="mb-3">
-            <label for="title" class="form-label">Event title</label>
-            <input type="text" class="form-control" name="title" id="title">
+          <div class="form-group">
+                {{ form.title.label(class="form-label", for="editevent-title") }}
+                {{ form.title(class="form-control", id="editevent-title", value=event.title) }}
           </div>
           <div class="mb-3">
             <label for="start" class="form-label">Start date</label>
@@ -17,7 +17,12 @@
             <label for="end" class="form-label">End date</label>
             <input type="date" class="form-control" name="end" id="end">
           </div>
-          <button type="submit" class="btn btn-outline-dark">Submit</button>
+          <div>
+              <button type="submit" class="btn btn-outline-dark">Submit</button>
+              <a title="Cancel" class="btn btn-dark" href="{{ url_for('user_views.calendar') }}" role="button">Cancel</a>
+          </div>
+
         </form>
+
     </div>
 {% endblock %}
