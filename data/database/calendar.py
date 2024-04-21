@@ -13,5 +13,6 @@ class Calendar(SqlAlchemyBase):
     user_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("users.id"))
     start = sqlalchemy.Column(sqlalchemy.DateTime)
     end = sqlalchemy.Column(sqlalchemy.DateTime)
+    color = sqlalchemy.Column(sqlalchemy.String, nullable=False)
 
     users_relationship = orm.relationship("User", back_populates="calendar_relationship")

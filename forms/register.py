@@ -8,6 +8,6 @@ class RegisterForm(FlaskForm):
     email = EmailField('Email', validators=[DataRequired()])
     password = PasswordField('Придумайте пароль', validators=[DataRequired()])
     password_again = PasswordField('Повторите пароль', validators=[DataRequired()])
-    bday = DateField('День рождения 🌸')
+    bday = DateField('День рождения')
     remember_me = BooleanField('Запомнить меня')
     submit = SubmitField('Создать аккаунт')

@@ -1,24 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="container">
+    <div class="container_form">
+        <h1>Edit event</h1>
         <form action="/calendar_edit_event/{{ event.id }}" method="POST">
             <div>
                 {{ form.csrf_token }}
             </div>
-          <div class="input-box">
+          <div class="box">
               {{ form.title.label(class="form-label", for="title") }}
               {{ form.title(class="form-control", id="title", value=event.title) }}
             </div>
-            <div class="input-box">
+            <div class="box">
                   {{ form.start.label(for="start") }}
                   {{ form.start(class="form-control", type="date", id="start", value=event.start) }}
           </div>
-          <div class="input-box">
+          <div class="box">
                   {{ form.end.label(for="end") }}
                   {{ form.end(class="form-control", type="date", id="end", value=event.end) }}
           </div>
-          <div>
+          <div class="buttons">
               <button type="submit" class="btn btn-outline-dark">Submit</button>
+              <a title="Delete" class="btn btn-outline-dark" href="/calendar_delete_event/{{event.id}}" role="button">Delete</a>
               <a title="Cancel" class="btn btn-outline-dark" href="{{ url_for('user_views.calendar') }}" role="button">Cancel</a>
           </div>
 
