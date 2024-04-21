@@ -155,7 +155,7 @@
 /* task boxes */
 
 p.task-content {
-    width: 250px;
+    width: 40%;
     word-wrap: break-word;
     font-style: italic;
     color: #737373;
@@ -163,7 +163,7 @@ p.task-content {
 }
 
 b.task-title {
-    width: 100px;
+    width: 20%;
     margin-right: 20px;
     margin-left: 20px;
     word-wrap: break-word;
@@ -206,7 +206,6 @@ b.task-title {
     border-radius: 20px;
     padding: 20px;
     align-items: center;
-    max-width: 800px;
     overflow: auto;
 }
 
