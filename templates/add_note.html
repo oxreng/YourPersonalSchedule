@@ -2,43 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../static/css/notes.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/add_note.css" />
     <title>Add Note</title>
 </head>
 <body>
 {% extends "base.html" %}
 {% block content %}
-    <div class="addnote-form-container">
-        <form method="post" action="/add_note">
-            <h2>Add Note</h2>
-            <!-- CSRF Protection -->
-            {{ form.csrf_token }}
+    <form method="post" action="/add_note" novalidate>
+        <!-- CSRF Protection -->
+        {{ form.csrf_token }}
+        {{ form.hidden_tag() }}
+        <h1>Add Note</h1>
+        <div class="input-box">
+          {{ form.title.label }}
+          {{ form.title(class="form-control", type="string") }}
+          {% for error in form.title.errors %}
+            <div class="alert alert-danger" role="alert">
+              {{ error }}
+            </div>
+          {% endfor %}
+        </div>
+        <div class="input-box" id="content-inp">
+          {{ form.content.label }}
+          {{ form.content(class="form-control", type="textarea") }}
+          {% for error in form.content.errors %}
+            <div class="alert alert-danger" role="alert">
+              {{ error }}
+            </div>
+          {% endfor %}
+        </div>
 
-            <!-- Title input-->
-            <div class="form-group">
-                {{ form.title.label(class="form-label", for="addnote-title") }}
-                {{ form.title(class="form-control", id="addnote-title", placeholder="Title") }}
+            <div class="date">
+                <div class="input-box" id="note_date">
+                  {{ form.date.label }}
+                  {{ form.date(class="form-control", type="date") }}
+                  {% for error in form.date.errors %}
+                    <div class="alert alert-danger" role="alert">
+                      {{ error }}
+                    </div>
+                  {% endfor %}
+                </div>
             </div>
 
-            <!-- Content input-->
-            <div class="form-group">
-                {{ form.content.label(class="form-label", for="addnote-content") }}
-                {{ form.content(class="form-control", id="addnote-content", placeholder="Content") }}
-            </div>
-
-            <div class="form-group">
-                {{ form.date.label(class="form-label", for="addnote-date") }}
-                {{ form.date(class="form-control", id="addnote-date", placeholder="Content") }}
-            </div>
-
-            <!-- Submit/Add note button -->
-            <button title="Add note" type="submit" class="btn btn-primary">Add</button>
-
-            <!-- Cancel button -->
-            <a title="Cancel" class="btn btn-primary" href="{{ url_for('user_views.notes') }}"
-               role="button">Cancel</a>
-        </form>
-    </div>
+        <div class="buttons">
+            <button type="submit" class="button">Add</button>
+            <a title="Cancel" class="button_a" href="{{ url_for('user_views.notes') }}" role="button">Cancel</a>
+        </div>
+    </form>
 
 {% endblock %}
 </body>

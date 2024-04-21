@@ -22,15 +22,6 @@
     margin-right: 40px;
 }
 
-.addnote-form-container {
-    max-width: 800px;
-    padding: 1em;
-    border: 1px solid #ccc;
-    border-radius: 1em;
-    background-color: #f2f2f2;
-    margin: 5% auto 0;
-}
-
 #notes-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -63,10 +54,69 @@
 // text-overflow: ellipsis;
 // }
 
+.form-group input {
+       width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 2px solid #1a1a1a;
+    border-radius: 40px;
+    color: #1a1a1a;
+    padding: 20px 20px 20px 20px;
+}
+
+.form-group textarea {
+       width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 2px solid #1a1a1a;
+    border-radius: 40px;
+    color: #1a1a1a;
+    padding: 20px 20px 20px 20px;
+    min-height: 150px;
+}
+
+.form-group label {
+    width: 100%;
+    background: transparent;
+}
 
 #edit-note-button, #delete-note-button {
     color: #919b93;
     transition: 0.3s;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons .button {
+    width: 100%;
+    height: 45px;
+    border: none;
+    background: #99ccff;
+    outline: none;
+    border-radius: 40px;
+    border: 2px solid #1a1a1a;
+    color: #1a1a1a;
+    font-weight: 600;
+    margin-top: 30px;
+}
+
+.buttons .button_a {
+    width: 100%;
+    height: 45px;
+    border: none;
+    background: #99ccff;
+    outline: none;
+    border-radius: 40px;
+    border: 2px solid #1a1a1a;
+    color: #1a1a1a;
+    font-weight: 600;
+    margin-top: 30px;
+    text-align: center;
+    text-decoration: none;
 }
 
 #edit-note-button:hover {
