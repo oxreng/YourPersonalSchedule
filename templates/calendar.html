@@ -32,6 +32,13 @@
                 firstDay: 1,
                 droppable: true,
                 dayMaxEvents: true,
+                eventTextColor: '#000000',
+
+                eventTimeFormat: {
+                     hour: 'numeric',
+                      minute: '2-digit',
+                      meridiem: false
+                },
 
                 headerToolbar: {
                   start: 'button today',
@@ -55,7 +62,8 @@
                         title: '{{ event.title }}',
                         start: '{{ event.start }}',
                         end: '{{ event.end }}',
-                        color: '{{ event.color }}'
+                        color: '{{ event.color }}',
+                        allDay: '{{ event.duration }}'
                     },
 
                     {% endfor %}

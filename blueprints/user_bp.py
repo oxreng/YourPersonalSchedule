@@ -33,12 +33,19 @@ def calendar():
     events_db = session.query(Calendar).filter(Calendar.user_id == current_user.id).all()
     events = []
     for event in events_db:
+        flag = ''
+        end = event.end_date
+        if (event.start_date == event.end_date and str(event.start_time) == '00:00:00'
+                and str(event.end_time) == '23:59:00' or (event.end_date - event.start_date).days > 1):
+            flag = 1
+            end = event.end_date + timedelta(days=1)
         events.append({
             'id': event.id,
             'title': event.title,
-            'start': event.start.strftime("%Y-%m-%d"),
-            'end': (event.end + timedelta(days=1)).strftime("%Y-%m-%d"),
-            'color': event.color
+            'start': f'{event.start_date}T{event.start_time}',
+            'end': f'{end}T{event.end_time}',
+            'color': event.color,
+            'duration': flag
         })
     return render_template('calendar.html', events=events)
 
@@ -47,12 +54,15 @@ def calendar():
 @login_required
 def add_event():
     form = EventForm(request.form)
+
     if request.method == 'POST' and form.validate_on_submit():
         session = db_session.create_session()
         new_event = Calendar(
             title=form.title.data,
-            start=form.start.data,
-            end=form.end.data,
+            start_date=form.start_date.data,
+            start_time=form.start_time.data,
+            end_date=form.end_date.data,
+            end_time=form.end_time.data,
             user_id=current_user.id,
             color=form.color.data
         )
@@ -70,12 +80,17 @@ def edit_event(event_id):
     form = EventForm(request.form)
     session = db_session.create_session()
     event = session.query(Calendar).filter(event_id == Calendar.id).first()
-    event.start = event.start.strftime("%Y-%m-%d")
-    event.end = event.end.strftime("%Y-%m-%d")
-    if request.method == 'POST' and form.validate_on_submit():
+
+    if request.method == 'POST':
         event.title = form.title.data
-        event.start = form.start.data
-        event.end = form.end.data
+        event.start_date = form.start_date.data
+        if form.start_time.data:
+            event.start_time = form.start_time.data
+        event.end_date = form.end_date.data
+        if form.end_time.data:
+            event.end_time = form.end_time.data
+        event.color = form.color.data
+
         session.commit()
         return redirect(url_for('user_views.calendar'))
     return render_template('edit_event.html', form=form, event=event)

@@ -8,21 +8,36 @@
             </div>
 
             <div class="box">
-                <label for="title" class="form-label">Event title</label>
-                <input type="text" class="form-control" name="title" id="title">
+                {{ form.title.label(class="form-label", for="title") }}
+                {{ form.title(class="form-control") }}
+            </div>
+
+            <div class="container_datetime">
+                <div class="box">
+                {{ form.start_date.label }}
+                {{ form.start_date(class="form-control", type="date") }}
+                </div>
+                    <div class="box">
+                    {{ form.start_time.label }}
+                      {{ form.start_time(class="form-control", type="time") }}
+                </div>
+            </div>
+
+            <div class="container_datetime">
+                <div class="box">
+                     {{ form.end_date.label }}
+                     {{ form.end_date(class="form-control", type="date") }}
+                </div>
+                <div class="box">
+                    {{ form.end_time.label }}
+                      {{ form.end_time(class="form-control", type="time") }}
+                </div>
             </div>
 
             <div class="box">
-                {{ form.start.label }}
-                {{ form.start(class="form-control", type="date") }}
-            </div>
-            <div class="box">
-                 {{ form.end.label }}
-                 {{ form.end(class="form-control", type="date") }}
-            </div>
-            <div class="box">
-                <label for="color">Сhoose the color of the event</label>
-                <input type="color" list="colors" id="color" class="choose_color" value='#E7ECFF'/>
+                <label>Сhoose the color of the event</label>
+                {{ form.color.label(class="form-label", for="color") }}
+                {{ form.color(class="form-control", type="color", list="colors", id="color", value='#E7ECFF') }}
                 <datalist id="colors">
                     <option value="#FED6BC"></option>
                     <option value="#FDEED9"></option>
