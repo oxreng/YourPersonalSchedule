@@ -44,3 +44,7 @@ h1 {
 .container_datetime {
     display:flex;
 }
+.massage {
+    padding-top: 10px;
+    text-align: center;
+}

@@ -54,9 +54,13 @@ def calendar():
 @login_required
 def add_event():
     form = EventForm(request.form)
-
+    session = db_session.create_session()
     if request.method == 'POST' and form.validate_on_submit():
-        session = db_session.create_session()
+        start = datetime.combine(form.start_date.data, form.start_time.data)
+        end = datetime.combine(form.end_date.data, form.end_time.data)
+        if start > end:
+            message = 'End date should be later than start date'
+            return render_template('edit_event.html', form=form, message=message)
         new_event = Calendar(
             title=form.title.data,
             start_date=form.start_date.data,
@@ -80,15 +84,24 @@ def edit_event(event_id):
     form = EventForm(request.form)
     session = db_session.create_session()
     event = session.query(Calendar).filter(event_id == Calendar.id).first()
-
     if request.method == 'POST':
+        start_time, end_time = event.start_time, event.end_time
+
+        if form.start_time.data:
+            start_time = form.start_time.data
+        if form.end_time.data:
+            end_time = form.end_time.data
+
+        start = datetime.combine(form.start_date.data, start_time)
+        end = datetime.combine(form.end_date.data, end_time)
+        if start > end:
+            message = 'End date should be later than start date'
+            return render_template('edit_event.html', form=form, event=event, message=message)
         event.title = form.title.data
         event.start_date = form.start_date.data
-        if form.start_time.data:
-            event.start_time = form.start_time.data
+        event.start_time = start_time
         event.end_date = form.end_date.data
-        if form.end_time.data:
-            event.end_time = form.end_time.data
+        event.end_time = end_time
         event.color = form.color.data
 
         session.commit()
@@ -105,11 +118,6 @@ def delete_event(event_id):
     session.commit()
     flash("Event deleted 🗑️", category='success')
     return redirect(url_for('user_views.calendar'))
-
-
-@user_blueprint.route('/schedule')
-def schedule():
-    return render_template('schedule.html')
 
 
 @user_blueprint.route('/tasks')

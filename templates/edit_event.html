@@ -15,10 +15,11 @@
                 <div class="box">
                 {{ form.start_date.label }}
                 {{ form.start_date(class="form-control", type="date", id="start_date", value=event.start_date) }}
+
                 </div>
                     <div class="box">
-                    {{ form.start_time.label }}
-                      {{ form.start_time(class="form-control", type="time", id="start_time", value=event.start_time) }}
+                        {{ form.start_time.label }}
+                        {{ form.start_time(class="form-control", type="time", id="start_time", value=event.start_time) }}
                 </div>
             </div>
 
@@ -49,11 +50,12 @@
                     <option value="#C6D8FF"></option>
                 </datalist>
             </div>
-          <div class="buttons">
-              <button type="submit" class="btn btn-outline-dark">Submit</button>
-              <a title="Delete" class="btn btn-outline-dark" href="/calendar_delete_event/{{event.id}}" role="button">Delete</a>
-              <a title="Cancel" class="btn btn-outline-dark" href="{{ url_for('user_views.calendar') }}" role="button">Cancel</a>
-          </div>
+            <div class="buttons">
+                <button type="submit" class="btn btn-outline-dark">Submit</button>
+                <a title="Delete" class="btn btn-outline-dark" href="/calendar_delete_event/{{event.id}}" role="button">Delete</a>
+                <a title="Cancel" class="btn btn-outline-dark" href="{{ url_for('user_views.calendar') }}" role="button">Cancel</a>
+            </div>
+            <div style="color:red" class="massage">{{ message }}</div>
 
         </form>
 
