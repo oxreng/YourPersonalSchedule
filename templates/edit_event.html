@@ -10,14 +10,45 @@
               {{ form.title.label(class="form-label", for="title") }}
               {{ form.title(class="form-control", id="title", value=event.title) }}
             </div>
+
+            <div class="container_datetime">
+                <div class="box">
+                {{ form.start_date.label }}
+                {{ form.start_date(class="form-control", type="date", id="start_date", value=event.start_date) }}
+                </div>
+                    <div class="box">
+                    {{ form.start_time.label }}
+                      {{ form.start_time(class="form-control", type="time", id="start_time", value=event.start_time) }}
+                </div>
+            </div>
+
+            <div class="container_datetime">
+                <div class="box">
+                     {{ form.end_date.label }}
+                     {{ form.end_date(class="form-control", type="date", id="end_date", value=event.end_date) }}
+                </div>
+                <div class="box">
+                    {{ form.end_time.label }}
+                    {{ form.end_time(class="form-control", type="time", id="end_time", value=event.end_time) }}
+                </div>
+            </div>
+
             <div class="box">
-                  {{ form.start.label(for="start") }}
-                  {{ form.start(class="form-control", type="date", id="start", value=event.start) }}
-          </div>
-          <div class="box">
-                  {{ form.end.label(for="end") }}
-                  {{ form.end(class="form-control", type="date", id="end", value=event.end) }}
-          </div>
+                <label>Сhoose the color of the event</label>
+                {{ form.color.label(class="form-label", for="color") }}
+                {{ form.color(class="form-control", type="color", list="colors", id="color", value=event.color) }}
+                <datalist id="colors">
+                    <option value="#FED6BC"></option>
+                    <option value="#FDEED9"></option>
+                    <option value="#FFFADD"></option>
+                    <option value="#F6FFF8"></option>
+                    <option value="#C3FBD8"></option>
+                    <option value="#E7ECFF"></option>
+                    <option value="#B5F2EA"></option>
+                    <option value="#DEF7FE"></option>
+                    <option value="#C6D8FF"></option>
+                </datalist>
+            </div>
           <div class="buttons">
               <button type="submit" class="btn btn-outline-dark">Submit</button>
               <a title="Delete" class="btn btn-outline-dark" href="/calendar_delete_event/{{event.id}}" role="button">Delete</a>

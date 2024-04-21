@@ -38,12 +38,11 @@ h1 {
 
 }
 .input-box {
-    padding-top: 25px;
-    padding-bottom: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     weight: 100%;
 }
 .remember {
-    padding: 10px;
     justify-content: space-between;
     font-size: 15px;
 }
