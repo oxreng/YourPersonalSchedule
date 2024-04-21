@@ -347,7 +347,7 @@ def login():
             return redirect(url_for('user_views.main_page'))
         return render_template('login.html',
                                form=form,
-                               message='Неверный логин или пароль')
+                               message='Invalid username or password')
     return render_template('login.html', form=form)
 
 
