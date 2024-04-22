@@ -12,6 +12,10 @@ from forms.edit_note import EditNoteForm
 from forms.add_task import AddTaskForm
 from data.database.tasks import Task
 from forms.event import EventForm
+from forms.profile_update import UpdateAccountForm
+import secrets
+import os
+from PIL import Image
 
 user_blueprint = Blueprint('user_views', __name__, template_folder='templates')
 
@@ -349,6 +353,49 @@ def login():
                                form=form,
                                message='Invalid username or password')
     return render_template('login.html', form=form)
+
+
+def save_picture(form_picture):
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_picture.filename)
+    picture_fn = random_hex + f_ext
+    root_path = '\\'.join(user_blueprint.root_path.split('\\')[:-1])
+    picture_path = os.path.join(root_path, 'static/profile_img', picture_fn)
+
+    output_size = (125, 125)
+    i = Image.open(form_picture)
+    i.thumbnail(output_size)
+    i.save(picture_path)
+
+    return picture_fn
+
+
+def delete_photo(photo):
+    root_path = '\\'.join(user_blueprint.root_path.split('\\')[:-1])
+    os.remove(f'{root_path}/static/profile_img/{photo}')
+
+
+@user_blueprint.route('/settings', methods=['GET', 'POST'])
+def settings():
+    form = UpdateAccountForm()
+    if form.validate_on_submit():
+        session = db_session.create_session()
+        user = session.query(User).filter(User.id == current_user.id).first()
+        if form.picture.data:
+            if current_user.avatar != 'profile_default.png':
+                delete_photo(current_user.avatar)
+            picture_file = save_picture(form.picture.data)
+            user.avatar = picture_file
+
+        user.email = form.email.data
+        session.commit()
+        flash("Your account has beem updated 👍", category='success')
+        return redirect(url_for('user_views.main_page'))
+    elif request.method == 'GET':
+        form.email.data = current_user.email
+    image_file = url_for('static', filename='profile_img/' + current_user.avatar)
+
+    return render_template('settings.html', image_file=image_file, form=form)
 
 
 @user_blueprint.route('/logout')

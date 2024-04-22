@@ -25,11 +25,10 @@
             <li>
                 <div class="profile-dropdown">
                     <a class="img">
-                        <img src="../static/img/profile_default.png" alt="profile">
+                        <img src="{{url_for('static', filename='profile_img/' + current_user.avatar)}}" alt="profile">
                     </a>
                     <div class="profile-dropdown-content">
                         <a href="/settings">Settings</a>
-                        <a href="/switch_themes">Dark mode</a>
                         <a href="/logout">Logout</a>
                     </div>
                 </div>

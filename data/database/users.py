@@ -14,7 +14,7 @@ class User(SqlAlchemyBase, UserMixin):
     hashed_password = sqlalchemy.Column(sqlalchemy.String)
     name = sqlalchemy.Column(sqlalchemy.String, nullable=False)
     bday = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)
-    avatar = sqlalchemy.Column(sqlalchemy.Text, nullable=True, default=None)
+    avatar = sqlalchemy.Column(sqlalchemy.Text, nullable=False, default='profile_default.png')
 
     calendar_relationship = orm.relationship("Calendar", back_populates="users_relationship")
     notes_relationship = orm.relationship("Note", back_populates="users_relationship")
