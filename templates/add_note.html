@@ -2,53 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../static/css/add_note.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/note.css" />
     <title>Add Note</title>
 </head>
 <body>
 {% extends "base.html" %}
 {% block content %}
     <form method="post" action="/add_note" novalidate>
-        <!-- CSRF Protection -->
-        {{ form.csrf_token }}
-        {{ form.hidden_tag() }}
-        <h1>Add Note</h1>
-        <div class="input-box">
-          {{ form.title.label }}
-          {{ form.title(class="form-control", type="string") }}
-          {% for error in form.title.errors %}
-            <div class="alert alert-danger" role="alert">
-              {{ error }}
-            </div>
-          {% endfor %}
-        </div>
-        <div class="input-box" id="content-inp">
-          {{ form.content.label }}
-          {{ form.content(class="form-control", type="textarea") }}
-          {% for error in form.content.errors %}
-            <div class="alert alert-danger" role="alert">
-              {{ error }}
-            </div>
-          {% endfor %}
-        </div>
+        <div class="container_note">
 
-            <div class="date">
-                <div class="input-box" id="note_date">
-                  {{ form.date.label }}
-                  {{ form.date(class="form-control", type="date") }}
-                  {% for error in form.date.errors %}
-                    <div class="alert alert-danger" role="alert">
-                      {{ error }}
-                    </div>
-                  {% endfor %}
+            <!-- CSRF Protection -->
+            {{ form.csrf_token }}
+            {{ form.hidden_tag() }}
+            <h1>Add Note</h1>
+            <div class="box_note">
+              {{ form.title.label }}
+              {{ form.title(class="form-control", type="string") }}
+              {% for error in form.title.errors %}
+                <div class="alert alert-danger" role="alert">
+                  {{ error }}
                 </div>
+              {% endfor %}
+            </div>
+            <div class="box_note" id="content-inp">
+              {{ form.content.label }}
+                {{ form.content(class="form-control", type="textarea", rows=5) }}
+              {% for error in form.content.errors %}
+                <div class="alert alert-danger" role="alert">
+                  {{ error }}
+                </div>
+              {% endfor %}
             </div>
 
-        <div class="buttons">
-            <button type="submit" class="button">Add</button>
-            <a title="Cancel" class="button_a" href="{{ url_for('user_views.notes') }}" role="button">Cancel</a>
+                <div class="date">
+                    <div class="box_note" id="note_date">
+                      {{ form.date.label }}
+                      {{ form.date(class="form-control", type="date") }}
+                      {% for error in form.date.errors %}
+                        <div class="alert alert-danger" role="alert">
+                          {{ error }}
+                        </div>
+                      {% endfor %}
+                    </div>
+                </div>
+
+            <div class="buttons_note">
+                <button type="submit" class="btn btn-outline-dark">Add</button>
+                <a title="Cancel" class="btn btn-outline-dark" href="{{ url_for('user_views.notes') }}" role="button">Cancel</a>
+            </div>
+
         </div>
     </form>
+
 
 {% endblock %}
 </body>

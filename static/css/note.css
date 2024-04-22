@@ -1,7 +1,4 @@
-#calendar {
-    padding-top: 30px;
-}
-.container_form {
+.container_note {
     width: 70%;
     background: transparent;
     color: #1a1a1a;
@@ -10,7 +7,10 @@
     padding: 30px 40px;
     margin: 100px auto;
 }
-.box input {
+.box_note {
+    padding: 20px 0;
+}
+.box_note input {
     height: 50px;
     background: transparent;
     border: none;
@@ -20,35 +20,30 @@
     color: #1a1a1a;
     padding: 10px 20px;
 }
-h1 {
-    text-align: center;
+.box_note textarea {
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid #1a1a1a;
+    border-radius: 20px;
+    color: #1a1a1a;
+    padding: 10px 20px;
+    padding-right: 20px;
+    resize: none;
 }
-.buttons {
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+.buttons_note {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
 }
-.box {
-    padding-top: 25px;
-    padding-bottom: 30px;
-}
-.container_datetime input{
-    width: 90%;
-}
-.container_datetime .box {
-    width: 50%;
-}
-.container_datetime {
-    display:flex;
-}
-.massage {
-    padding-top: 10px;
-    text-align: center;
-}
-.buttons a {
+.buttons_note a {
     background: #99ccff;
 }
-.buttons button {
+.buttons_note button {
     background: #99ccff;
 }

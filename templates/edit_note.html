@@ -2,36 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../static/css/notes.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/note.css" />
     <title>Edit Note</title>
 </head>
 <body>
 {% extends "base.html" %}
 {% block content %}
-    <div class="addnote-form-container">
+    <div class="container_note">
         <form method="post" action="/edit_note/{{ note.note_id }}">
             <h1>Edit Note</h1>
             <!-- CSRF Protection -->
             {{ form.csrf_token }}
 
             <!-- Title update input-->
-            <div class="form-group">
+            <div class="box_note">
                 {{ form.edit_title.label(class="form-label", for="editnote-title") }}
                 {{ form.edit_title(class="form-control", id="editnote-title", value=note.title) }}
             </div>
 
             <!-- Content update input-->
-            <div class="form-group">
+            <div class="box_note">
                 {{ form.edit_content.label(class="form-label", for="editnote-content") }}
-                {{ form.edit_content(class="form-control", id="editnote-content") }}
+                {{ form.edit_content(class="form-control", id="editnote-content", rows=5) }}
             </div>
 
-            <!-- Submit/Edit note button -->
-            <button title="Edit note" type="submit" class="btn btn-primary">Edit Note</button>
+            <div class="buttons_note">
+                <button title="Edit note" type="submit" class="btn btn-outline-dark">Edit Note</button>
 
-            <!-- Cancel button -->
-            <a title="Cancel" class="btn btn-primary" href="{{ url_for('user_views.notes') }}"
-               role="button">Cancel</a>
+                <!-- Cancel button -->
+                <a title="Cancel" class="btn btn-outline-dark" href="{{ url_for('user_views.notes') }}"
+                   role="button">Cancel</a>
+            </div>
         </form>
     </div>
     <script>
