@@ -13,15 +13,15 @@
       <div class="media">
         <img class="rounded-circle account-img" src="{{ image_file }}">
         <div class="media-body">
-          <h2 class="account-heading">{{ current_user.username }}</h2>
+          <h2 class="account-heading">{{ current_user.name }}</h2>
           <p class="text-secondary">{{ current_user.email }}</p>
         </div>
       </div>
         <form method="POST" action="" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Account Info</legend>
-                <div class="form-group">
+                <legend class="border-bottom">Account Info</legend>
+                <div class="info">
                     {{ form.name.label(class="form-control-label") }}
 
                     {% if form.name.errors %}
@@ -35,7 +35,7 @@
                         {{ form.name(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
-                <div class="form-group">
+                <div class="info">
                     {{ form.email.label(class="form-control-label") }}
                     {% if form.email.errors %}
                         {{ form.email(class="form-control form-control-lg is-invalid") }}
@@ -48,19 +48,22 @@
                         {{ form.email(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
-                <div class="form-group">
-                    {{ form.picture.label() }}
-                    {{ form.picture(class="form-control-file") }}
-                    {% if form.picture.errors %}
-                        {% for error in form.picture.errors %}
-                            <span class="text-danger">{{ error }}</span></br>
-                        {% endfor %}
-                    {% endif %}
+                <div class="container_setting">
+                    <div class="add_file">
+                        {{ form.picture.label(class='custom-file-upload') }}
+                        {{ form.picture(class="file-upload", type="file") }}
+                        {% if form.picture.errors %}
+                            {% for error in form.picture.errors %}
+                                <span class="text-danger">{{ error }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="submit">
+                    {{ form.submit(class="btn btn-outline-info") }}
+                    </div>
                 </div>
             </fieldset>
-            <div class="form-group">
-                {{ form.submit(class="btn btn-outline-info") }}
-            </div>
+
         </form>
     </div>
 {% endblock content %}

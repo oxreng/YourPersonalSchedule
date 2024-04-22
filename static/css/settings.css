@@ -25,11 +25,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .content-section {
-  background: #ffffff;
-  padding: 10px 20px;
-  border: 1px solid #dddddd;
-  border-radius: 3px;
-  margin-bottom: 20px;
+    background: #ffffff;
+    padding: 30px 30px;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-top: 50px;
 }
 
 .article-title {
@@ -77,4 +77,33 @@ a.article-title:hover {
 
 .account-heading {
   font-size: 2.5rem;
+}
+.info input{
+    border: 1px solid black;
+    border-radius: 20px;
+}
+.info {
+    margin-top: 20px;
+}
+.add_file {
+    margin-top: 20px;
+    width: 50%;
+    padding: 20px;
+}
+.submit {
+    width:50%;
+    margin: 40px auto 0 auto;
+    align-item:center;
+    display:flex;
+    justify-content: center;
+}
+.submit input{
+    width:70%;
+}
+.container_setting {
+    display: flex;
+}
+.add_file label {
+    display: block;
+    margin-bottom: 20px;
 }
