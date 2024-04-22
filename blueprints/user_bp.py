@@ -16,8 +16,23 @@ from forms.settings import UpdateAccountForm
 import secrets
 import os
 from PIL import Image
+import requests
+
 
 user_blueprint = Blueprint('user_views', __name__, template_folder='templates')
+daily_quote = ('Through Discipline Comes Freedom', 'Aristotle')
+
+
+def change_quote():
+    global daily_quote
+    params = {
+        'language': 'en'
+    }
+    headers = {
+        'X-TheySaidSo-Api-Secret': '9GcNNN8VjJfPZPnM5pKSlRXu8gOXCLjdFrI9yhxZ'
+    }
+    quote = requests.get("https://quotes.rest/qod?", params=params, headers=headers).json()
+    daily_quote = (quote['contents']['quotes'][0]['quote'], quote['contents']['quotes'][0]['author'],)
 
 
 @user_blueprint.route('/')
@@ -27,7 +42,7 @@ def static():
 
 @user_blueprint.route('/main_page')
 def main_page():
-    return render_template('homepage.html')
+    return render_template('homepage.html', quote=daily_quote)
 
 
 @user_blueprint.route('/calendar')

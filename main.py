@@ -1,9 +1,12 @@
 from flask import Flask
+
+import blueprints.user_bp
 from data.database import db_session
 from flask_login import LoginManager
 from flask_wtf.csrf import CSRFProtect
 
 from blueprints import user_bp
+import schedule
 
 
 def create_app():
@@ -30,5 +33,12 @@ def create_app():
 
 app = create_app()
 
-if __name__ == '__main__':
+
+def main():
+    blueprints.user_bp.change_quote()
+    schedule.every().day.at('10:00').do(blueprints.user_bp.change_quote)
     app.run(port=8000, host='127.0.0.1', debug=True, threaded=True)
+
+
+if __name__ == '__main__':
+    main()
