@@ -327,6 +327,10 @@ def register_page():
             return render_template('register.html',
                                    form=form,
                                    message=f'Электронная почта {form.email.data} уже используется')
+        if form.bday.data > datetime.now().date() or abs((form.bday.data - datetime.now().date()).days // 365) > 150:
+            return render_template('register.html',
+                                   form=form,
+                                   message=f'Введите актуальную дату рождения')
         user = User(
             name=form.name.data,
             email=form.email.data,
