@@ -1,7 +1,9 @@
 .page-title {
     margin-bottom: 20px
 }
-
+.main-content{
+    padding: 30px 0 50px 0;
+}
 .page-title img {
     width: 30px;
     transition: transform .15s cubic-bezier(.11,.65,1,1.69);
@@ -27,7 +29,6 @@
     grid-column-gap: 30px;
     grid-row-gap: 30px;
     width: 100%;
-    padding-top: 30px;
 }
 #note-card {
     flex: 2 0 calc(47.8%);
@@ -140,5 +141,5 @@
     }
 }
 p {
-    height:75%
+    height:auto;
     }

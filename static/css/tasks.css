@@ -1,5 +1,8 @@
 /* page title */
 
+.main-content{
+    padding: 30px 0 50px 0;
+}
 .page-title {
     margin-bottom: 20px
 }
