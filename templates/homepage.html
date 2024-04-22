@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../static/css/homepage.css" />
+    <title>YourScheduleManager</title>
+    <script src="https://kit.fontawesome.com/c56576f44b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+        <div class="image-container">
+            <img src="../static/img/homepage_1.png" alt="YourPersonalSchedule">
+            <div class="centered-text">Through Discipline Comes Freedom.</div>
+            <div class="quote-text">— Aristotle.</div>
+        </div>
+    <hr style="border-top: 3px dotted #bbb;margin:70px 0 50px">
+    <div class="abilities">
+        <div class="usage">
+            <i class="fa-regular fa-calendar"></i>
+            <p class="usage-heading">Calendar</p>
+            <p class="usage-text">Manage your whole week by planning some daily activities!</p>
+        </div>
+        <div class="usage">
+            <i class="fa-regular fa-note-sticky"></i>
+            <p class="usage-heading">Notes</p>
+            <p class="usage-text">Create hot notes to review them later!</p>
+        </div>
+        <div class="usage">
+            <i class="fa-solid fa-list-check"></i>
+            <p class="usage-heading">Tasks</p>
+            <p class="usage-text">Plan some urgent goals and make sure you completed it!</p>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

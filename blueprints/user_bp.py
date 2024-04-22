@@ -27,7 +27,7 @@ def static():
 
 @user_blueprint.route('/main_page')
 def main_page():
-    return render_template('main_page.html')
+    return render_template('homepage.html')
 
 
 @user_blueprint.route('/calendar')
