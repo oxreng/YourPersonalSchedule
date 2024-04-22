@@ -12,7 +12,7 @@ from forms.edit_note import EditNoteForm
 from forms.add_task import AddTaskForm
 from data.database.tasks import Task
 from forms.event import EventForm
-from forms.profile_update import UpdateAccountForm
+from forms.settings import UpdateAccountForm
 import secrets
 import os
 from PIL import Image
@@ -388,11 +388,13 @@ def settings():
             user.avatar = picture_file
 
         user.email = form.email.data
+        user.name = form.name.data
         session.commit()
         flash("Your account has beem updated 👍", category='success')
         return redirect(url_for('user_views.main_page'))
     elif request.method == 'GET':
         form.email.data = current_user.email
+        form.name.data = current_user.name
     image_file = url_for('static', filename='profile_img/' + current_user.avatar)
 
     return render_template('settings.html', image_file=image_file, form=form)
