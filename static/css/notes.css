@@ -17,11 +17,9 @@
     justify-content: center;
     align-items: center;
 }
-
 .page-title h1 {
     margin-right: 40px;
 }
-
 #notes-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -31,29 +29,14 @@
     width: 100%;
     padding-top: 30px;
 }
-
 #note-card {
     flex: 2 0 calc(47.8%);
     box-sizing: border-box;
     border-radius: 30px;
     width: 100%;
-    border: 1px solid #ccc;
     padding: 1em;
-    background: rgb(242,242,242);
-    background: linear-gradient(90deg, rgba(242,242,242,1) 1%, rgba(210,247,255,1) 100%);
-    -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-    -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    border: 2px solid black;
 }
-
-// #note-card p {
-// display: -webkit-box;
-// -webkit-line-clamp: 3;
-// -webkit-box-orient: vertical;
-// overflow: hidden;
-// text-overflow: ellipsis;
-// }
-
 .form-group input {
        width: 100%;
     height: 100%;
@@ -63,9 +46,8 @@
     color: #1a1a1a;
     padding: 20px 20px 20px 20px;
 }
-
 .form-group textarea {
-       width: 100%;
+    width: 100%;
     height: 100%;
     background: transparent;
     border: 2px solid #1a1a1a;
@@ -157,3 +139,6 @@
         max-width: calc(96%);
     }
 }
+p {
+    height:75%
+    }
