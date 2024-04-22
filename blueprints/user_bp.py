@@ -29,7 +29,7 @@ def change_quote():
         'language': 'en'
     }
     headers = {
-        'X-TheySaidSo-Api-Secret': '9GcNNN8VjJfPZPnM5pKSlRXu8gOXCLjdFrI9yhxZ'
+        'X-TheySaidSo-Api-Secret': 'mcZZVAWz71SDA7C9M6AWg1KnGn0sshdkVb8sfPGx'
     }
     quote = requests.get("https://quotes.rest/qod?", params=params, headers=headers).json()
     daily_quote = (quote['contents']['quotes'][0]['quote'], quote['contents']['quotes'][0]['author'],)
