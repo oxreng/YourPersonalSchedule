@@ -62,6 +62,7 @@
             {% endfor %}
         </div>
             <div class="remember">{{ form.remember_me() }} {{ form.remember_me.label }}</div>
+            <div class="log-in-redirect" style="margin:10px 10px 10px">Already have an account? <a href="/login">Log In</a></div>
             <div class="input-box button">{{ form.submit(type="submit", class="button") }}
             <div style="color:red">{{ message }}</div></div>
 

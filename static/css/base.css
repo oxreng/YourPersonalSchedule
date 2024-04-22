@@ -4,6 +4,9 @@
   background-color: #f1f1f1;
   padding: 20px 10px;
   height: 80px;
+  position: sticky;
+  top: 0;
+  z-index: 99;
 }
 
 /* Style the header links */
@@ -79,6 +82,50 @@
 
 .profile-dropdown:hover .profile-dropdown-content {
     display: block;
+}
+
+/* footer */
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000033;
+    padding: 40px 80px;
+    margin-top: 50px;
+}
+
+.footer .copy {
+    color: #fff;
+}
+
+.footer .footer-links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.footer .footer-links .links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    padding: 0 40px;
+}
+
+.footer .footer-links .links span {
+    font-size: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 10px 0;
+}
+
+.footer .footer-links .links a {
+    text-decoration: none;
+    color: #a1a1a1;
+    padding: 10px 20px;
+    text-decoration: underline
 }
 
 /* --- */

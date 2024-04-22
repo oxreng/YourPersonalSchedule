@@ -32,6 +32,7 @@
               {% endfor %}
             </div>
             <div class="remember">{{ form.remember_me() }} {{ form.remember_me.label }}</div>
+            <div class="sign-up-redirect" style="margin:10px 10px 25px">Don`t have an account yet? <a href="/register">Sign Up</a></div>
             <div class="submit">{{ form.submit(type="submit", class="button") }}</div>
             <div style="color:red">{{ message }}</div>
         </form>
