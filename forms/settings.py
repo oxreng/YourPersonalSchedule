@@ -7,8 +7,6 @@ from data.database.users import User
 from data.database import db_session
 
 
-# pip install email_validator
-# pip install Pillow
 class UpdateAccountForm(FlaskForm):
     name = StringField('Name',
                        validators=[DataRequired(), Length(min=2, max=20)])

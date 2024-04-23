@@ -24,7 +24,6 @@ def global_init(db_file):
     # строка подключения (тип базы данных, путь до базы данных и параметры подключения)
     # (для того, чтобы в последующем Sqlalchemy выбрала правильный движок работы с БД)
     conn_str = f'sqlite:///{db_file.strip()}?check_same_thread=False'
-    print(f"Подключение к базе данных по адресу {conn_str}")
 
     # создаём движок для работы с БД
     engine = sa.create_engine(conn_str, echo=False)
