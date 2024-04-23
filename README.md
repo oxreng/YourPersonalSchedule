@@ -3,7 +3,6 @@
   <h1>  
 The meaning of the site
   <h1>
-<br>
 <h3>
   The meaning of the site:
 </h3>
@@ -11,7 +10,6 @@ The meaning of the site
 _This site contains the most important things in our lives - time. Calendar, notes, to-do lists: We have it all._ 
 
 ---
-<br>
 
 ---
   <h2>
