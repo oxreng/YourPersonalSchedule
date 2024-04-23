@@ -1,53 +1,66 @@
-# The Dude
+# Your Personal Schedule
 <div id="header" align="center">
   <h1>  
-Смысл игры
+The meaning of the site
   <h1>
-    
+<br>
 <h3>
-  Смысл игры:
+  The meaning of the site:
 </h3>
     
-_Жанр игры: Action-Adventure. Стиль игры: pixel art. Основной геймплей игры заключается в зачистке уровней от противников и решении головоломок для продвижения по сюжету._
-    
+_This site contains the most important things in our lives - time. Calendar, notes, to-do lists: We have it all._ 
+
 ---
+<br>
 
+---
   <h2>
-     Главное меню
+     Screenshots
   </h2>
-
-![Menu](<data/images/for_readme/Главное меню.png>)
-
- _🎵 В игре есть музыка, которая меняется в зависимости от места, в меню также есть музыка 🎵_
-
   <h2>
-     Меню настроек
+     Main Menu
   </h2>
-
-![Settings](data/images/for_readme/Настройки.png)
- _💬 При выходе из игры настройки сохраняются 💬_
-
-
-  <h2>
-     Геймплей
-  </h2>
-
-
-
-https://github.com/oxreng/arcade_project/assets/105565251/a00d94ef-33ab-4196-9b69-c64c1f6a64d1
-
-https://github.com/oxreng/arcade_project/assets/105565251/caf5ed06-3ca9-4b36-9a23-95488b794ee9
-
-
-
-
+  
+![Main menu](static/for_readme/main_page.png)
 
 
 
   <h2>
-     Мини-игры
+     Registration
   </h2>
 
-![Minigame](data/images/for_readme/Мини-игра.png)
+![Registration](static/for_readme/register.png)
 
- _🎲 Иногда, при прохождении игры, нужно будет разгыдвать головоломки 🎲_
+
+  <h2>
+     Log in
+  </h2>
+
+![Log in](<static/for_readme/log in.png>)
+
+
+  <h2>
+     Calendar
+  </h2>
+
+![     Calendar
+](static/for_readme/calendar.png)
+
+
+  <h2>
+     Notes
+  </h2>
+
+![Notes](static/for_readme/notes.png)
+
+  <h2>
+     To-do list
+  </h2>
+
+![To-do list](<static/for_readme/todo lists.png>)
+
+  <h2>
+     Settings
+  </h2>
+
+![alt text](static/for_readme/settings.png)
