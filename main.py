@@ -1,12 +1,9 @@
 from flask import Flask
-
-import blueprints.user_bp
 from data.database import db_session
 from flask_login import LoginManager
 from flask_wtf.csrf import CSRFProtect
 
 from blueprints import user_bp
-import schedule
 
 
 def create_app():

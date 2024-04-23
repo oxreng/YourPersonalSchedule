@@ -18,7 +18,6 @@ import os
 from PIL import Image
 import requests
 
-
 user_blueprint = Blueprint('user_views', __name__, template_folder='templates')
 
 
