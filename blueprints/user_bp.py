@@ -20,11 +20,9 @@ import requests
 
 
 user_blueprint = Blueprint('user_views', __name__, template_folder='templates')
-daily_quote = ('Through Discipline Comes Freedom', 'Aristotle')
 
 
 def change_quote():
-    global daily_quote
     params = {
         'language': 'en'
     }
@@ -32,7 +30,7 @@ def change_quote():
         'X-TheySaidSo-Api-Secret': 'mcZZVAWz71SDA7C9M6AWg1KnGn0sshdkVb8sfPGx'
     }
     quote = requests.get("https://quotes.rest/qod?", params=params, headers=headers).json()
-    daily_quote = (quote['contents']['quotes'][0]['quote'], quote['contents']['quotes'][0]['author'],)
+    return quote['contents']['quotes'][0]['quote'], quote['contents']['quotes'][0]['author']
 
 
 @user_blueprint.route('/')
@@ -42,6 +40,15 @@ def static():
 
 @user_blueprint.route('/main_page')
 def main_page():
+    with open('data/quote.txt') as quote_file:
+        quote_data = quote_file.readlines()[0].split('$')
+        if (datetime.now() - datetime.strptime(quote_data[-1].strip('\n'), "%Y %B %d %H:%M")).days >= 1:
+            new_quote = change_quote()
+            with open('data/quote.txt', 'w') as new_quote_file:
+                new_quote_file.write(f'{new_quote[0]}${new_quote[1]}${datetime.now().strftime("%Y %B %d %H:%M")}')
+            daily_quote = (new_quote[0], new_quote[1],)
+        else:
+            daily_quote = (quote_data[0], quote_data[1],)
     return render_template('homepage.html', quote=daily_quote)
 
 

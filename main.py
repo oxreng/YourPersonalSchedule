@@ -35,7 +35,6 @@ app = create_app()
 
 
 def main():
-    schedule.every().day.at('10:00').do(blueprints.user_bp.change_quote)
     app.run(port=8000, host='127.0.0.1', debug=True, threaded=True)
 
 
