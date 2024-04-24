@@ -85,7 +85,7 @@ def add_event():
         end = datetime.combine(form.end_date.data, form.end_time.data)
         if start > end:
             message = 'End date should be later than start date'
-            return render_template('edit_event.html', form=form, message=message)
+            return render_template('add_event.html', form=form, message=message)
         new_event = Calendar(
             title=form.title.data,
             start_date=form.start_date.data,
