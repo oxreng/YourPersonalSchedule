@@ -1,3 +1,7 @@
+body {
+  overflow-x: hidden;
+}
+
 /* Style the header with a grey background and some padding */
 .header {
   overflow: visible;
@@ -125,6 +129,9 @@
     color: #a1a1a1;
     padding: 10px 20px;
     text-decoration: underline
+}
+.footer .footer-links .links p {
+    margin-bottom: 0;
 }
 
 #contacts {
